@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# Signals
+signal just_moved(player_position: Vector2)
+
 # Public Parameters
 @export var movement_time: float = 0.2
 
@@ -8,7 +11,7 @@ var _movement_tween: Tween
 var _integer_position := Vector2i(0, 0)
 
 
-# Built-in Function Overrides
+# Built-in Method Overrides
 func _physics_process(delta: float) -> void:
 	if !(_movement_tween and _movement_tween.is_running()):
 		if Input.is_action_pressed("move_up") and !$Rays/Up.is_colliding():
@@ -21,8 +24,10 @@ func _physics_process(delta: float) -> void:
 			_move(Vector2i.RIGHT)
 
 
+# Private Methods
 func _move(dir: Vector2i):
 	_integer_position += dir * Globals.tile_size_pixels
+	just_moved.emit(global_position)
 	position = Vector2(_integer_position)
 	$Sprite.position = -Vector2(dir * Globals.tile_size_pixels)
 
