@@ -11,9 +11,13 @@ extends Node2D
 # Public Properties
 var BlockRect: Rect2i:
 	get:
+		if _block_rect == null:
+			_calculate_block_rect()
 		return _block_rect
 var BlockSizeTiles: Vector2i:
 	get:
+		if _block_size_tiles == null:
+			_calculate_block_rect()
 		return _block_size_tiles
 
 # Public Variables
@@ -22,6 +26,8 @@ var BlockSizeTiles: Vector2i:
 # Private Variables
 var _block_rect: Rect2i
 var _block_size_tiles: Vector2i
+
+
 
 # Built-in Method Overrides
 func _ready() -> void:
@@ -41,5 +47,19 @@ func _calculate_block_rect() -> void:
 
 
 func _validate_neighbors() -> void:
-	# TODO: fill in
+	var offending_blocks: Array[MapBlock] = []
+	if neighbor_up.BlockSizeTiles.x != BlockSizeTiles.x:
+		offending_blocks.append(neighbor_up)
+	if neighbor_down.BlockSizeTiles.x != BlockSizeTiles.x:
+		offending_blocks.append(neighbor_down)
+	if neighbor_left.BlockSizeTiles.y != BlockSizeTiles.y:
+		offending_blocks.append(neighbor_left)
+	if neighbor_right.BlockSizeTiles.y != BlockSizeTiles.y:
+		offending_blocks.append(neighbor_right)
+	if offending_blocks.size() > 0:
+		push_error(
+			"For MapBlock ", name, ", neighboring blocks: \n",
+			offending_blocks,
+			"\nhave incompatible sizes."
+		)
 	return
