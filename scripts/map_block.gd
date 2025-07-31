@@ -14,30 +14,80 @@ var BlockRect: Rect2i:
 		if _block_rect == null:
 			_calculate_block_rect()
 		return _block_rect
+var Position: Vector2i:
+	get:
+		return _block_rect.position
+var Size: Vector2i:
+	get:
+		return _block_rect.size
+var End: Vector2i:
+	get:
+		return _block_rect.end
 var BlockSizeTiles: Vector2i:
 	get:
 		if _block_size_tiles == null:
 			_calculate_block_rect()
 		return _block_size_tiles
+var NeighborBlocks: Array[MapBlock]:
+	get:
+		return _neighbor_blocks
+var RefLayer: TileMapLayer:
+	get:
+		return _ref_layer
 
 # Public Variables
+var id: int
+var is_loaded := false
 @onready var map_layers: Array = find_children("*", "TileMapLayer")
 
 # Private Variables
+@onready var _neighbor_blocks: Array[MapBlock] = [
+	neighbor_left,
+	neighbor_right,
+	neighbor_up,
+	neighbor_down
+]
+@onready var _ref_layer: TileMapLayer = get_child(0) as TileMapLayer
 var _block_rect: Rect2i
 var _block_size_tiles: Vector2i
-
 
 
 # Built-in Method Overrides
 func _ready() -> void:
 	_calculate_block_rect()
-	_validate_neighbors()
+	get_tree().root.connect("ready", _validate_neighbors)
+
+
+# Public Methods
+func position_after_entering(
+	original_tile: Vector2i, enter_dir: Vector2i
+) -> Vector2i:
+	var new_tile: Vector2i = original_tile
+	match enter_dir:
+		Vector2i.UP:
+			new_tile.y = BlockRect.end.y - 1
+			#new_tile.x = clampi(new_tile.x, BlockRect.position.x, BlockRect.end.x)
+		Vector2i.DOWN:
+			new_tile.y = BlockRect.position.y
+			#new_tile.x = clampi(new_tile.x, BlockRect.position.x, BlockRect.end.x)
+		Vector2i.LEFT:
+			new_tile.x = BlockRect.end.x - 1
+			#new_tile.y = clampi(new_tile.y, BlockRect.position.y, BlockRect.end.y)
+		Vector2i.RIGHT:
+			print("shifting right: ")
+			new_tile.x = BlockRect.position.x
+			#new_tile.y = clampi(new_tile.y, BlockRect.position.y, BlockRect.end.y)
+		_:
+			push_error(
+				"Invalid enter_dir, ", enter_dir,
+				", must be (0,+-1) or (+-1, 0)."
+			)
+	return new_tile
 
 
 # Private Methods
 func _calculate_block_rect() -> void:
-	var used_rects: Array[Rect2i] = map_layers.map(
+	var used_rects: Array = map_layers.map(
 		func(x): return x.get_used_rect()
 	)
 	_block_rect = used_rects[0]
@@ -59,7 +109,8 @@ func _validate_neighbors() -> void:
 	if offending_blocks.size() > 0:
 		push_error(
 			"For MapBlock ", name, ", neighboring blocks: \n",
-			offending_blocks,
-			"\nhave incompatible sizes."
+			offending_blocks.map(func(x): return x.name),
+			"\nhave incompatible sizes:\n",
+			offending_blocks.map(func(x): return x.Size)
 		)
 	return

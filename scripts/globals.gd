@@ -2,4 +2,4 @@ class_name Globals
 extends Node
 
 # Public Parameters
-const tile_size_pixels := Vector2i(32, 32)
+const tile_size_pixels := Vector2i(16, 16)

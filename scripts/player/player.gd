@@ -1,14 +1,23 @@
+class_name Player
 extends CharacterBody2D
 
 # Signals
-signal just_moved(player_position: Vector2)
+signal just_moved(player_tile: Vector2i)
 
 # Public Parameters
 @export var movement_time: float = 0.2
+@export var sprinting_movement_time: float = 0.05
+
+# Public Properties
+var TilePosition: Vector2i:
+	get:
+		return _tile_position
+	set(val):
+		_tile_position = val
 
 # Private Variables
 var _movement_tween: Tween
-var _integer_position := Vector2i(0, 0)
+var _tile_position := Vector2i(0, 0)
 
 
 # Built-in Method Overrides
@@ -26,18 +35,20 @@ func _physics_process(delta: float) -> void:
 
 # Private Methods
 func _move(dir: Vector2i):
-	_integer_position += dir * Globals.tile_size_pixels
-	just_moved.emit(global_position)
-	position = Vector2(_integer_position)
-	$Sprite.position = -Vector2(dir * Globals.tile_size_pixels)
+	_tile_position += dir
+	print("moved to: ", _tile_position)
+	position += Vector2(dir * GlobalsInst.tile_size_pixels)
+	just_moved.emit(_tile_position)
+	$Sprite.position -= Vector2(dir * GlobalsInst.tile_size_pixels)
 
 	if _movement_tween:
 		_movement_tween.kill()
 	_movement_tween = create_tween()
 	_movement_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	var is_sprinting: bool = Input.is_action_pressed("sprint")
 	_movement_tween.tween_property(
 		$Sprite,
 		"position",
-		Vector2.ZERO,
-		movement_time
+		0.5 * GlobalsInst.tile_size_pixels,
+		sprinting_movement_time if is_sprinting else movement_time
 	).set_trans(Tween.TRANS_SINE)
