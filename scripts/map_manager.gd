@@ -6,6 +6,9 @@ extends Node2D
 @export var starting_block: MapBlock
 @export var starting_player_position: Vector2i = Vector2i(3, 3)
 @export var unused_block_position := Vector2i(-1000, -1000)
+@export var delay_after_side_change_secs := 0.2
+@export_category("Debugging:")
+@export var unfold_map := false
 
 # Public Properties
 @onready var map_blocks: Array = find_children("*", "MapBlock", false)
@@ -38,6 +41,7 @@ func load_nearest_blocks() -> void:
 		load_blocks_from_center(active_block)
 		return
 	var exit_dir := exit_direction()
+	shift_player_by_block(Enums.vec_dir_map[exit_dir])
 	match exit_dir:
 		Vector2i.RIGHT:
 			load_blocks_from_center(active_block.neighbor_right)
@@ -49,11 +53,10 @@ func load_nearest_blocks() -> void:
 			load_blocks_from_center(active_block.neighbor_down)
 		_:
 			push_error("Invalid exit direction ", exit_dir, " found for Player.")
-	shift_player_by_block(exit_dir)
+	#shift_player_by_block(exit_dir)
 
 
 func load_blocks_from_center(center_block: MapBlock) -> void:
-	# TODO: Account for 'normal vectors' of each mapblock
 	active_block = center_block
 	# Position loaded blocks
 	active_block.position = Vector2.ZERO
@@ -84,19 +87,70 @@ func load_blocks_from_center(center_block: MapBlock) -> void:
 
 	# Only make active blocks visible
 	for block in map_blocks:
-		var is_loaded: bool = block == active_block or block in active_block.NeighborBlocks
+		var is_loaded: bool = block == active_block or block in active_block.NeighborBlocks.values()
 		block.visible = is_loaded
 		block.is_loaded = is_loaded
 		if not is_loaded:
 			block.position = unused_block_position
+	if unfold_map:
+		return
+	for dir in Enums.Dir.values():
+		active_block.NeighborBlocks[dir].visible = active_block.edge_types[dir] == Enums.Edge.NONE
+		# TODO: draw edge differently  for outer vs inner blocks
 	return
 
 
-func shift_player_by_block(exit_dir: Vector2i) -> void:
-	print("running shift_player_by_block")
-	set_player_tile(active_block.position_after_entering(
-		%Player.TilePosition, exit_dir
-	))
+func shift_player_by_block(dir: Enums.Dir) -> void:
+	var approach_dir: Enums.Dir = active_block.approach_dirs[dir]
+	var to_block: MapBlock = active_block.NeighborBlocks[dir]
+	var tile_offset: int = active_block.neighbor_offsets[dir]
+	var edge_coord: int # Coordinate of edge tile of new block
+	var pres_coord: int # Coordinate along edge in new block
+	var hori_dirs := [Enums.Dir.LEFT, Enums.Dir.RIGHT]
+	var vert_dirs := [Enums.Dir.UP, Enums.Dir.DOWN]
+
+	# Calculate new coordinates without caring which should be 'x' or 'y'
+	match approach_dir:
+		Enums.Dir.RIGHT:
+			edge_coord = to_block.BlockSizeTiles.x - 1
+		Enums.Dir.DOWN:
+			edge_coord = to_block.BlockSizeTiles.y - 1
+		_:
+			edge_coord = 0
+	pres_coord = %Player.TilePosition.x if dir in vert_dirs else %Player.TilePosition.y
+	var count_from_end: bool = (
+		(dir == Enums.Dir.RIGHT and approach_dir == Enums.Dir.UP)
+		or (dir == Enums.Dir.LEFT and approach_dir == Enums.Dir.DOWN)
+		or (dir == Enums.Dir.UP and approach_dir == Enums.Dir.RIGHT)
+		or (dir == Enums.Dir.DOWN and approach_dir == Enums.Dir.LEFT)
+		or (dir == approach_dir)
+	)
+	print("Count from end: ", count_from_end)
+	if count_from_end:
+		if approach_dir in vert_dirs:
+			pres_coord = to_block.BlockSizeTiles.y - pres_coord - 1 # TODO: should -1 be here?
+		else:
+			pres_coord = to_block.BlockSizeTiles.x - pres_coord - 1
+	pres_coord += (-1 if count_from_end else +1) * tile_offset
+
+	# Infer if new tile is (pres_coord, zero_coord) or (zero_coord, pres_coord)
+	var rotate_axes: bool = (
+		(dir in hori_dirs and approach_dir in vert_dirs)
+		or (dir in vert_dirs and approach_dir in hori_dirs)
+	)
+	set_player_tile(
+		Vector2i(
+			pres_coord if approach_dir in vert_dirs else edge_coord,
+			edge_coord if approach_dir in vert_dirs else pres_coord,
+		)
+	)
+	# Player orientation should be opposite to the 'approach from' direction.
+	%Player.set_player_orientation(
+		Enums.vec_dir_map[-1 * Enums.dir_vec_map[approach_dir]]
+	)
+	# Enforce pause in movement after switching sides
+	%Player.pause_movement(delay_after_side_change_secs)
+	return
 
 
 func set_player_tile(tile: Vector2i) -> void:

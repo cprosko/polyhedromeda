@@ -8,6 +8,11 @@ extends Node2D
 @export var neighbor_left: MapBlock
 @export var neighbor_right: MapBlock
 
+@export_category("3D Properties")
+@export var edge_types: Dictionary[Enums.Dir, Enums.Edge]
+@export var approach_dirs: Dictionary[Enums.Dir, Enums.Dir]
+@export var neighbor_offsets: Dictionary[Enums.Dir, int]
+
 # Public Properties
 var BlockRect: Rect2i:
 	get:
@@ -28,7 +33,7 @@ var BlockSizeTiles: Vector2i:
 		if _block_size_tiles == null:
 			_calculate_block_rect()
 		return _block_size_tiles
-var NeighborBlocks: Array[MapBlock]:
+var NeighborBlocks: Dictionary[Enums.Dir,MapBlock]:
 	get:
 		return _neighbor_blocks
 var RefLayer: TileMapLayer:
@@ -41,12 +46,12 @@ var is_loaded := false
 @onready var map_layers: Array = find_children("*", "TileMapLayer")
 
 # Private Variables
-@onready var _neighbor_blocks: Array[MapBlock] = [
-	neighbor_left,
-	neighbor_right,
-	neighbor_up,
-	neighbor_down
-]
+@onready var _neighbor_blocks: Dictionary[Enums.Dir, MapBlock] = {
+	Enums.Dir.LEFT:  neighbor_left,
+	Enums.Dir.RIGHT: neighbor_right,
+	Enums.Dir.UP:    neighbor_up,
+	Enums.Dir.DOWN:  neighbor_down
+}
 @onready var _ref_layer: TileMapLayer = get_child(0) as TileMapLayer
 var _block_rect: Rect2i
 var _block_size_tiles: Vector2i

@@ -14,6 +14,7 @@ var TilePosition: Vector2i:
 		return _tile_position
 	set(val):
 		_tile_position = val
+var can_move := true
 
 # Cached References
 @onready var sprite = $Sprite
@@ -25,15 +26,27 @@ var _tile_position := Vector2i(0, 0)
 
 # Built-in Method Overrides
 func _physics_process(delta: float) -> void:
-	if !(_movement_tween and _movement_tween.is_running()):
-		if Input.is_action_pressed("move_up") and !$Rays/Up.is_colliding():
-			_move(Vector2i.UP)
-		elif Input.is_action_pressed("move_down") and !$Rays/Down.is_colliding():
-			_move(Vector2i.DOWN)
-		elif Input.is_action_pressed("move_left") and !$Rays/Left.is_colliding():
-			_move(Vector2i.LEFT)
-		elif Input.is_action_pressed("move_right") and !$Rays/Right.is_colliding():
-			_move(Vector2i.RIGHT)
+	if (_movement_tween and _movement_tween.is_running()) or not can_move:
+		return
+	if Input.is_action_pressed("move_up") and !$Rays/Up.is_colliding():
+		_move(Vector2i.UP)
+	elif Input.is_action_pressed("move_down") and !$Rays/Down.is_colliding():
+		_move(Vector2i.DOWN)
+	elif Input.is_action_pressed("move_left") and !$Rays/Left.is_colliding():
+		_move(Vector2i.LEFT)
+	elif Input.is_action_pressed("move_right") and !$Rays/Right.is_colliding():
+		_move(Vector2i.RIGHT)
+
+
+# Public Methods
+func set_player_orientation(dir: Enums.Dir) -> void:
+	_play_idle_animation(Enums.dir_vec_map[dir])
+
+
+func pause_movement(duration_secs: float) -> void:
+	can_move = false
+	await get_tree().create_timer(duration_secs).timeout
+	can_move = true
 
 
 # Private Methods
@@ -41,7 +54,6 @@ func _move(dir: Vector2i):
 	_tile_position += dir
 	print("moved to: ", _tile_position)
 	position += Vector2(dir * GlobalsInst.tile_size_pixels)
-	just_moved.emit(_tile_position)
 	sprite.position -= Vector2(dir * GlobalsInst.tile_size_pixels)
 
 	if _movement_tween:
@@ -60,6 +72,7 @@ func _move(dir: Vector2i):
 	if sprite.is_playing():
 		await sprite.animation_finished
 	_play_idle_animation(dir)
+	just_moved.emit(_tile_position)
 
 
 func _play_move_animation(dir: Vector2i, is_sprinting: bool = false) -> void:
