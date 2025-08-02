@@ -16,11 +16,16 @@ var active_block: MapBlock
 var BlockIDs: Array[int]:
 	get:
 		return _block_ids
+var TotalNodes: int:
+	get:
+		var total = 0
+		for map_block in map_blocks:
+			total += map_block.nodes_and_wires.TotalNodes
+		return total
 
 
 # Private Variables
 var _block_ids: Array[int]
-
 
 # Built-in Method Overrides
 func _ready() -> void:
@@ -35,6 +40,7 @@ func reset_map() -> void:
 	set_active_block(starting_block)
 	load_blocks_from_center(active_block)
 	set_player_tile(starting_player_position)
+	active_block.nodes_and_wires.place_starting_node()
 
 
 func set_active_block(
@@ -125,7 +131,6 @@ func shift_player_by_block(dir: Enums.Dir) -> void:
 	var tile_offset: int = active_block.neighbor_offsets[dir]
 	var edge_coord: int # Coordinate of edge tile of new block
 	var pres_coord: int # Coordinate along edge in new block
-	var hori_dirs := [Enums.Dir.LEFT, Enums.Dir.RIGHT]
 	var vert_dirs := [Enums.Dir.UP, Enums.Dir.DOWN]
 
 	# Calculate new coordinates without caring which should be 'x' or 'y'
@@ -152,11 +157,6 @@ func shift_player_by_block(dir: Enums.Dir) -> void:
 			pres_coord = to_block.BlockSizeTiles.x - pres_coord - 1
 	pres_coord += (-1 if count_from_end else +1) * tile_offset
 
-	# Infer if new tile is (pres_coord, zero_coord) or (zero_coord, pres_coord)
-	var rotate_axes: bool = (
-		(dir in hori_dirs and approach_dir in vert_dirs)
-		or (dir in vert_dirs and approach_dir in hori_dirs)
-	)
 	set_player_tile(
 		Vector2i(
 			pres_coord if approach_dir in vert_dirs else edge_coord,
@@ -164,6 +164,7 @@ func shift_player_by_block(dir: Enums.Dir) -> void:
 		)
 	)
 	# Player orientation should be opposite to the 'approach from' direction.
+	await %Player.sprite.animation_finished
 	%Player.set_player_orientation(
 		Enums.vec_dir_map[-1 * Enums.dir_vec_map[approach_dir]]
 	)
@@ -185,7 +186,6 @@ func map_to_local(tile: Vector2i) -> Vector2:
 
 
 func exit_direction() -> Vector2i:
-	var block_rect: Rect2i = active_block.BlockRect
 	if %Player.TilePosition.x + 1 > active_block.End.x:
 		return Vector2i.RIGHT
 	if %Player.TilePosition.x < active_block.Position.x:
@@ -215,7 +215,7 @@ func _on_player_about_to_move(new_tile: Vector2i, old_tile: Vector2i) -> void:
 	_update_nodes_and_wires(new_tile, old_tile)
 
 
-func _on_player_just_moved(player_tile: Vector2i, old_tile: Vector2i) -> void:
+func _on_player_just_moved(player_tile: Vector2i, _old_tile: Vector2i) -> void:
 	if active_block.BlockRect.has_point(player_tile):
 		return
 	load_nearest_blocks()

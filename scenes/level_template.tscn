@@ -1,6 +1,7 @@
-[gd_scene load_steps=71 format=4 uid="uid://bpvohcmak3c2x"]
+[gd_scene load_steps=72 format=4 uid="uid://bpvohcmak3c2x"]
 
 [ext_resource type="Script" uid="uid://cvhqfqafns1lm" path="res://scripts/map_manager.gd" id="1_0ra3k"]
+[ext_resource type="Script" uid="uid://bq6yhha3dwffh" path="res://scripts/level_manager.gd" id="1_8yqn4"]
 [ext_resource type="Texture2D" uid="uid://73sf3wjc0pcc" path="res://tilesets/sources/fantasy_tiles/forest/forest_.png" id="1_iw5l3"]
 [ext_resource type="Script" uid="uid://3igi3vc7wm3i" path="res://scripts/player/player.gd" id="1_mm7tu"]
 [ext_resource type="Texture2D" uid="uid://b50toq3v1ncta" path="res://tilesets/sources/fantasy_tiles/tundra/tundra_.png" id="2_amll8"]
@@ -858,7 +859,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mm7tu"]
 size = Vector2(8, 8)
 
-[node name="Node2D" type="Node2D"]
+[node name="LevelManager" type="Node2D"]
+script = ExtResource("1_8yqn4")
+next_scene = "dummy_level_1"
 
 [node name="MapManager" type="Node2D" parent="."]
 position = Vector2(1, 1)
@@ -904,7 +907,7 @@ tile_set = ExtResource("3_t0jqh")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/ForestBlock1"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAANAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAAEAAsAAAAAAAAAAAA=")
 tile_set = ExtResource("4_hj7jb")
 script = ExtResource("5_h2vd2")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
@@ -943,7 +946,7 @@ tile_set = SubResource("TileSet_770am")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/TundraBlock1"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAANAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAHAAIAAAAAAAAAAAA=")
 tile_set = ExtResource("4_hj7jb")
 script = ExtResource("5_h2vd2")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
@@ -982,7 +985,6 @@ tile_set = SubResource("TileSet_770am")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/ForestBlock2"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAANAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAA=")
 tile_set = ExtResource("4_hj7jb")
 script = ExtResource("5_h2vd2")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
@@ -1021,7 +1023,6 @@ tile_set = SubResource("TileSet_770am")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/TundraBlock2"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAANAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAA=")
 tile_set = ExtResource("4_hj7jb")
 script = ExtResource("5_h2vd2")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
@@ -1060,7 +1061,6 @@ tile_set = SubResource("TileSet_770am")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/RockBlock1"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAANAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAA=")
 tile_set = ExtResource("4_hj7jb")
 script = ExtResource("5_h2vd2")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
@@ -1099,7 +1099,6 @@ tile_set = SubResource("TileSet_770am")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/RockBlock2"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAJAAQAAAAAAAAAAAANAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAA=")
 tile_set = ExtResource("4_hj7jb")
 script = ExtResource("5_h2vd2")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"

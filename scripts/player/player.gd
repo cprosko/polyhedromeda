@@ -8,6 +8,7 @@ signal just_moved(player_tile: Vector2i, old_tile: Vector2i)
 # Public Parameters
 @export var movement_time: float = 0.2
 @export var sprinting_movement_time: float = 0.05
+@export var starting_orientation := Vector2i.DOWN
 
 # Public Properties
 var TilePosition: Vector2i:
@@ -16,6 +17,7 @@ var TilePosition: Vector2i:
 	set(val):
 		_tile_position = val
 var can_move := true
+var move_dirs: Array[Vector2i] = []
 
 # Cached References
 @onready var sprite = $Sprite
@@ -27,7 +29,11 @@ var _tile_position := Vector2i(0, 0)
 
 
 # Built-in Method Overrides
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	_play_idle_animation(starting_orientation)
+
+
+func _physics_process(_delta: float) -> void:
 	if (_movement_tween and _movement_tween.is_running()) or not can_move:
 		return
 	if Input.is_action_pressed("undo") and _moves_since_start.size() > 0:
@@ -60,6 +66,10 @@ func dont_count_last_move(num_moves: int = 1) -> void:
 
 # Private Methods
 func _move(dir: Vector2i, is_undo: bool = false):
+	if move_dirs.size() > 0 and dir not in move_dirs:
+		return
+	else:
+		move_dirs.clear()
 	_tile_position += dir
 	about_to_move.emit(_tile_position, _tile_position - dir)
 	if is_undo:
@@ -74,7 +84,7 @@ func _move(dir: Vector2i, is_undo: bool = false):
 	_movement_tween = create_tween()
 	_movement_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	var is_sprinting: bool = Input.is_action_pressed("sprint")
-	_play_move_animation(dir, is_sprinting)
+	_play_move_animation(dir)
 	_movement_tween.tween_property(
 		sprite,
 		"position",
@@ -82,13 +92,13 @@ func _move(dir: Vector2i, is_undo: bool = false):
 		sprinting_movement_time if is_sprinting else movement_time
 	).set_trans(Tween.TRANS_SINE)
 	await _movement_tween.finished
+	just_moved.emit(_tile_position, _tile_position - dir)
 	if sprite.is_playing():
 		await sprite.animation_finished
 	_play_idle_animation(dir)
-	just_moved.emit(_tile_position, _tile_position - dir)
 
 
-func _play_move_animation(dir: Vector2i, is_sprinting: bool = false) -> void:
+func _play_move_animation(dir: Vector2i) -> void:
 	match dir:
 		Vector2i.LEFT:
 			sprite.play("motion_left")
