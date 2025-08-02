@@ -134,7 +134,7 @@ position = Vector2(40, -24)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bdg0b")
 autoplay = "default"
-frame_progress = 0.194935
+frame_progress = 0.775497
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 texture_filter = 1
