@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmbn5hylcaogk" path="res://tilesets/sources/flowers_and_grass.png" id="2_02utd"]
 [ext_resource type="Texture2D" uid="uid://drxk8ewaytlh8" path="res://tilesets/sources/icy_plants.png" id="3_sq3fl"]
 [ext_resource type="Texture2D" uid="uid://3uk2d51s5cyy" path="res://tilesets/sources/stalacmites.png" id="4_kdtwh"]
-[ext_resource type="Texture2D" uid="uid://67v5yaka27x2" path="res://tilesets/sources/black_square.png" id="5_6ra1n"]
+[ext_resource type="Texture2D" uid="uid://dm8le4wmmaarn" path="res://tilesets/sources/borders.png" id="5_1lcdc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mtr4o"]
 texture = ExtResource("1_1lcdc")
@@ -82,13 +82,25 @@ texture = ExtResource("4_kdtwh")
 2:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2bsy"]
-texture = ExtResource("5_6ra1n")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02utd"]
+texture = ExtResource("5_1lcdc")
 0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_mtr4o")
 sources/1 = SubResource("TileSetAtlasSource_em0uo")
 sources/2 = SubResource("TileSetAtlasSource_1jjb4")
 sources/3 = SubResource("TileSetAtlasSource_udwbu")
-sources/4 = SubResource("TileSetAtlasSource_m2bsy")
+sources/5 = SubResource("TileSetAtlasSource_02utd")

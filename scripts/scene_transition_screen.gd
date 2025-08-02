@@ -3,12 +3,13 @@ extends Control
 
 # Constants
 const ordered_scenes: Array[String] = [
+	"start_screen",
 	"level_template",
 	"dummy_level_1",
 ]
 
 # Public Parameters
-@export var artificial_loading_time_secs: float = 2.0
+@export var artificial_loading_time_secs: float = 0.5
 
 # Public Properties
 var current_scene: String
@@ -16,6 +17,7 @@ var current_scene: String
 # Built-In Method Overrides
 func _ready() -> void:
 	await get_tree().create_timer(artificial_loading_time_secs).timeout
+	print(GlobalsInst.current_scene_name)
 	get_tree().change_scene_to_file("res://scenes/"+next_scene()+".tscn")
 
 

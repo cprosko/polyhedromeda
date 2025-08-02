@@ -1,0 +1,196 @@
+[gd_scene load_steps=21 format=3 uid="uid://dtl2p4kl22nuc"]
+
+[ext_resource type="Script" uid="uid://b21nsu1bwbsfy" path="res://scripts/start_screen.gd" id="1_5pab1"]
+[ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="1_tx5wa"]
+[ext_resource type="Texture2D" uid="uid://fphgmeutoy78" path="res://sprites/cube_panel.png" id="2_he1sj"]
+[ext_resource type="FontFile" uid="uid://46uhdyfx21cf" path="res://fonts/PixeloidMono.ttf" id="3_r2jwc"]
+[ext_resource type="Texture2D" uid="uid://dlaxtp73dj4ni" path="res://tilesets/sources/robot_idle.png" id="4_r2jwc"]
+[ext_resource type="Texture2D" uid="uid://drrardrri63tm" path="res://sprites/icon.svg" id="5_hm208"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm208"]
+texture = ExtResource("2_he1sj")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm208"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pab1"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o30b1"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka6nf"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7p0"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecdxc"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qls88"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcj7n"]
+atlas = ExtResource("4_r2jwc")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bdg0b"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_hm208")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pab1")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_o30b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka6nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws7p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecdxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qls88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcj7n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hm208"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pab1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ka6nf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o30b1"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5pab1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tx5wa")
+stretch_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -152.0
+offset_right = -96.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hm208")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_r2jwc")
+theme_override_font_sizes/normal_font_size = 27
+text = "Cube Trotter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer"]
+position = Vector2(40, -24)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bdg0b")
+autoplay = "default"
+frame_progress = 0.0644863
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -72.0
+offset_right = 496.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_r2jwc")
+text = "A game by Belssed Studios
+Christian Prosko (code)
+& Hélène Spring (art)"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -72.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_hm208")
+expand_mode = 1
+
+[node name="PlayButton" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 168.0
+offset_top = 64.0
+offset_right = -168.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0.707918, 0.767015, 1)
+theme_override_colors/font_hover_color = Color(0.101961, 0.92549, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.400698, 0.400698, 0.400698, 1)
+theme_override_fonts/font = ExtResource("3_r2jwc")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hm208")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5pab1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ka6nf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o30b1")
+text = "Play"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

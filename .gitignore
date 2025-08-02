@@ -1,6 +1,10 @@
 # Ignored resources
 tilesets/sources/fantasy_tiles/
 
+# Ignored filetypes
+*.aseprite
+*.tmp
+
 # Godot 4+ specific ignores
 .godot/
 .nomedia
