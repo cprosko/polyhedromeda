@@ -2,7 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 # Signals
-signal just_moved(player_tile: Vector2i)
+signal about_to_move(new_tile: Vector2i, old_tile: Vector2i)
+signal just_moved(player_tile: Vector2i, old_tile: Vector2i)
 
 # Public Parameters
 @export var movement_time: float = 0.2
@@ -21,6 +22,7 @@ var can_move := true
 
 # Private Variables
 var _movement_tween: Tween
+var _moves_since_start: Array[Vector2i] = []
 var _tile_position := Vector2i(0, 0)
 
 
@@ -28,7 +30,9 @@ var _tile_position := Vector2i(0, 0)
 func _physics_process(delta: float) -> void:
 	if (_movement_tween and _movement_tween.is_running()) or not can_move:
 		return
-	if Input.is_action_pressed("move_up") and !$Rays/Up.is_colliding():
+	if Input.is_action_pressed("undo") and _moves_since_start.size() > 0:
+		_move(-_moves_since_start[-1], true)
+	elif Input.is_action_pressed("move_up") and !$Rays/Up.is_colliding():
 		_move(Vector2i.UP)
 	elif Input.is_action_pressed("move_down") and !$Rays/Down.is_colliding():
 		_move(Vector2i.DOWN)
@@ -49,12 +53,21 @@ func pause_movement(duration_secs: float) -> void:
 	can_move = true
 
 
+func dont_count_last_move(num_moves: int = 1) -> void:
+	for i in num_moves:
+		_moves_since_start.pop_back()
+
+
 # Private Methods
-func _move(dir: Vector2i):
+func _move(dir: Vector2i, is_undo: bool = false):
 	_tile_position += dir
-	print("moved to: ", _tile_position)
-	position += Vector2(dir * GlobalsInst.tile_size_pixels)
-	sprite.position -= Vector2(dir * GlobalsInst.tile_size_pixels)
+	about_to_move.emit(_tile_position, _tile_position - dir)
+	if is_undo:
+		dont_count_last_move()
+	else:
+		_moves_since_start.append(dir)
+	position += Vector2(dir * GlobalsInst.TILE_SIZE_PIXELS)
+	sprite.position -= Vector2(dir * GlobalsInst.TILE_SIZE_PIXELS)
 
 	if _movement_tween:
 		_movement_tween.kill()
@@ -65,14 +78,14 @@ func _move(dir: Vector2i):
 	_movement_tween.tween_property(
 		sprite,
 		"position",
-		0.5 * GlobalsInst.tile_size_pixels,
+		0.5 * GlobalsInst.TILE_SIZE_PIXELS,
 		sprinting_movement_time if is_sprinting else movement_time
 	).set_trans(Tween.TRANS_SINE)
 	await _movement_tween.finished
 	if sprite.is_playing():
 		await sprite.animation_finished
 	_play_idle_animation(dir)
-	just_moved.emit(_tile_position)
+	just_moved.emit(_tile_position, _tile_position - dir)
 
 
 func _play_move_animation(dir: Vector2i, is_sprinting: bool = false) -> void:

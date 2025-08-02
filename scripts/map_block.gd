@@ -14,6 +14,14 @@ extends Node2D
 @export var neighbor_offsets: Dictionary[Enums.Dir, int]
 
 # Public Properties
+var IsActive: bool:
+	get:
+		return _is_active
+	set(val):
+		print(name)
+		if not _is_active and val:
+			nodes_and_wires.enter_block()
+		_is_active = val
 var BlockRect: Rect2i:
 	get:
 		if _block_rect == null:
@@ -45,6 +53,9 @@ var id: int
 var is_loaded := false
 @onready var map_layers: Array = find_children("*", "TileMapLayer")
 
+# Cached References
+@onready var nodes_and_wires: NodesAndWires = $NodesAndWires
+
 # Private Variables
 @onready var _neighbor_blocks: Dictionary[Enums.Dir, MapBlock] = {
 	Enums.Dir.LEFT:  neighbor_left,
@@ -55,6 +66,7 @@ var is_loaded := false
 @onready var _ref_layer: TileMapLayer = get_child(0) as TileMapLayer
 var _block_rect: Rect2i
 var _block_size_tiles: Vector2i
+var _is_active: bool = false
 
 
 # Built-in Method Overrides
@@ -88,6 +100,10 @@ func position_after_entering(
 				", must be (0,+-1) or (+-1, 0)."
 			)
 	return new_tile
+
+
+func set_entry_dir(dir: Enums.Dir) -> void:
+	nodes_and_wires.entry_dir = dir
 
 
 # Private Methods

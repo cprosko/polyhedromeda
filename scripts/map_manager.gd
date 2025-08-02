@@ -17,6 +17,7 @@ var BlockIDs: Array[int]:
 	get:
 		return _block_ids
 
+
 # Private Variables
 var _block_ids: Array[int]
 
@@ -31,9 +32,24 @@ func _ready() -> void:
 
 # Public Methods
 func reset_map() -> void:
-	active_block = starting_block
+	set_active_block(starting_block)
 	load_blocks_from_center(active_block)
 	set_player_tile(starting_player_position)
+
+
+func set_active_block(
+	block: MapBlock, old_block: MapBlock = null
+) -> void:
+	if old_block != null:
+		old_block.IsActive = false
+		old_block.nodes_and_wires.leave_block()
+	active_block = block
+	if old_block != null:
+		var entry_dir: Enums.Dir = Enums.vec_dir_map[
+			-Enums.dir_vec_map[block.NeighborBlocks.find_key(old_block)]
+		]
+		active_block.set_entry_dir(entry_dir)
+	active_block.IsActive = true
 
 
 func load_nearest_blocks() -> void:
@@ -56,32 +72,35 @@ func load_nearest_blocks() -> void:
 	#shift_player_by_block(exit_dir)
 
 
-func load_blocks_from_center(center_block: MapBlock) -> void:
-	active_block = center_block
+func load_blocks_from_center(
+	center_block: MapBlock,
+) -> void:
+	if active_block != center_block:
+		set_active_block(center_block, active_block)
 	# Position loaded blocks
 	active_block.position = Vector2.ZERO
 	if active_block.neighbor_up != null:
 		active_block.neighbor_up.position = Vector2(
 			0,
 			map_to_local(-active_block.neighbor_up.Size).y
-			- 0.5 * GlobalsInst.tile_size_pixels.y
+			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.y
 		)
 	if active_block.neighbor_down != null:
 		active_block.neighbor_down.position = Vector2(
 			0,
 			map_to_local(active_block.Size).y
-			- 0.5 * GlobalsInst.tile_size_pixels.y
+			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.y
 		)
 	if active_block.neighbor_left != null:
 		active_block.neighbor_left.position = Vector2(
 			map_to_local(-active_block.neighbor_left.Size).x
-			- 0.5 * GlobalsInst.tile_size_pixels.x,
+			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.x,
 			0
 		)
 	if active_block.neighbor_right != null:
 		active_block.neighbor_right.position = Vector2(
 			map_to_local(active_block.End).x
-			- 0.5 * GlobalsInst.tile_size_pixels.x,
+			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.x,
 			0
 		)
 
@@ -157,7 +176,7 @@ func set_player_tile(tile: Vector2i) -> void:
 	%Player.TilePosition = tile
 	print("set_player_tile: ", tile)
 	%Player.global_position = active_block.RefLayer.to_global(
-		map_to_local(%Player.TilePosition) - 0.5 * GlobalsInst.tile_size_pixels
+		map_to_local(%Player.TilePosition) - 0.5 * GlobalsInst.TILE_SIZE_PIXELS
 	)
 
 
@@ -187,10 +206,20 @@ func _assign_block_ids() -> void:
 		_block_ids.append(ind)
 
 
+func _update_nodes_and_wires(player_tile: Vector2i, old_tile: Vector2i) -> void:
+	active_block.nodes_and_wires.update_nodes_and_wires(player_tile, old_tile)
+
+
 # Signal Response Methods
-func _on_player_just_moved(player_tile: Vector2i) -> void:
+func _on_player_about_to_move(new_tile: Vector2i, old_tile: Vector2i) -> void:
+	_update_nodes_and_wires(new_tile, old_tile)
+
+
+func _on_player_just_moved(player_tile: Vector2i, old_tile: Vector2i) -> void:
 	if active_block.BlockRect.has_point(player_tile):
 		return
-	print("Player position before load_blocks: ", %Player.position, ", tile: ", %Player.TilePosition)
 	load_nearest_blocks()
-	print("Player position after load_blocks: ", %Player.position, ", tile: ", %Player.TilePosition)
+	_update_nodes_and_wires(
+		%Player.TilePosition,
+		%Player.TilePosition + Enums.dir_vec_map[active_block.nodes_and_wires.entry_dir]
+	)
