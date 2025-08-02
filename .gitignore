@@ -1,3 +1,6 @@
+# Ignored resources
+tilesets/sources/fantasy_tiles/
+
 # Godot 4+ specific ignores
 .godot/
 .nomedia
