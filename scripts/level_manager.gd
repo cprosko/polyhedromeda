@@ -3,7 +3,8 @@ extends Node2D
 
 
 # Public Parameters
-@export var next_scene: String
+@export var current_scene_name: String = "level_template"
+@export var next_scene_name: String
 
 # Public Variables
 var activated_nodes: int = 0
@@ -15,7 +16,8 @@ var total_nodes: int
 
 # Built-In Method Overrides
 func _ready() -> void:
-	GlobalsInst.current_scene_name = get_tree().current_scene.name
+	GlobalsInst.current_scene_name = current_scene_name
+	GlobalsInst.next_scene_name = next_scene_name
 	total_nodes = map_manager.TotalNodes
 	print("Total nodes: ", total_nodes)
 	for map_block in map_manager.map_blocks:
@@ -25,8 +27,12 @@ func _ready() -> void:
 
 # Public Methods
 func win_level() -> void:
-	print("Won level!")
-	await %Player.just_moved
+	%WinDialog.activate_win_state()
+
+
+func load_next_scene() -> void:
+	if %Player.is_moving:
+		await %Player.just_moved
 	get_tree().change_scene_to_file.bind(
 		"res://scenes/scene_transition_screen.tscn"
 	).call_deferred()
@@ -42,3 +48,13 @@ func _on_loop_completed() -> void:
 	print("LOOP COMPLETED")
 	if activated_nodes >= total_nodes - 1: # -1 because starting node isn't counted
 		win_level()
+
+
+func _on_restart_button_pressed() -> void:
+	GlobalsInst.next_scene_name = "levels/"+current_scene_name
+	load_next_scene()
+
+
+func _on_exit_button_pressed() -> void:
+	GlobalsInst.next_scene_name = "start_screen"
+	load_next_scene()

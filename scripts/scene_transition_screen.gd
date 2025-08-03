@@ -4,8 +4,8 @@ extends Control
 # Constants
 const ordered_scenes: Array[String] = [
 	"start_screen",
+	"levels/level_0",
 	"level_template",
-	"dummy_level_1",
 	"win_screen",
 ]
 
@@ -24,7 +24,15 @@ func _ready() -> void:
 
 
 func next_scene() -> String:
-	var last_scene_ind: int = ordered_scenes.find(
-		GlobalsInst.current_scene_name
-	)
-	return ordered_scenes[(last_scene_ind + 1) % ordered_scenes.size()]
+	var next_scene_name: String
+	if GlobalsInst.next_scene_name != "":
+		next_scene_name = GlobalsInst.next_scene_name
+		GlobalsInst.next_scene_name = ""
+	else:
+		var last_scene_ind: int = ordered_scenes.find(
+			GlobalsInst.current_scene_name
+		)
+		next_scene_name =  ordered_scenes[
+			(last_scene_ind + 1) % ordered_scenes.size()
+		]
+	return next_scene_name

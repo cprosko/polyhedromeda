@@ -55,6 +55,7 @@ var is_loaded := false
 
 # Cached References
 @onready var nodes_and_wires: NodesAndWires = $NodesAndWires
+@onready var ground_tiles: TileMapLayer = $Ground
 
 # Private Variables
 @onready var _neighbor_blocks: Dictionary[Enums.Dir, MapBlock] = {
@@ -104,6 +105,19 @@ func position_after_entering(
 
 func set_entry_dir(dir: Enums.Dir) -> void:
 	nodes_and_wires.entry_dir = dir
+
+
+func is_open_tile(tile: Vector2i) -> bool:
+	if not nodes_and_wires.is_open_tile(tile):
+		return false
+	var used_ground_tiles: Array[Vector2i] = ground_tiles.get_used_cells()
+	for ground_tile in used_ground_tiles:
+		if tile != ground_tile:
+			continue
+		var tile_data: TileData = ground_tiles.get_cell_tile_data(tile)
+		if tile_data.has_custom_data("wall") and tile_data.get_custom_data("wall"):
+			return false
+	return true
 
 
 # Private Methods

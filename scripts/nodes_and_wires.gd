@@ -79,6 +79,7 @@ var starting_node: Vector2i
 # Private Variables
 var _total_nodes: int
 var _tile_chains: Array[Array] = []
+var _all_tiles: Array[Vector2i] = []
 var _just_entered: bool
 
 # Built-in Method Overrides
@@ -93,6 +94,7 @@ func _ready() -> void:
 func place_starting_node() -> void:
 	set_cell(%Player.TilePosition, 0, node_atlas_coords["starting"])
 	_tile_chains.append([%Player.TilePosition])
+	_all_tiles.append(_tile_chains[-1][-1])
 	starting_node = %Player.TilePosition
 	_just_entered = false
 
@@ -106,9 +108,14 @@ func leave_block() -> void:
 		_tile_chains.pop_back()
 
 
+func is_open_tile(tile: Vector2i) -> bool:
+	return tile not in _all_tiles or tile == _all_tiles[-1]
+
+
 func remove_tile(tile: Vector2i) -> void:
 	if not Input.is_action_pressed("undo"):
 		%Player.dont_count_last_move(2)
+	_all_tiles.pop_back()
 	_tile_chains[-1].pop_back()
 	set_cell(tile, -1)
 
@@ -116,10 +123,11 @@ func remove_tile(tile: Vector2i) -> void:
 func add_wire(tile: Vector2i, exit_dir: Enums.Dir) -> void:
 	var dir_from_last_tile: Enums.Dir
 	if _tile_chains[-1].size() == 0:
-		dir_from_last_tile = entry_dir
+		dir_from_last_tile = Enums.vec_dir_map[-Enums.dir_vec_map[entry_dir]]
 	else:
 		if get_cell_atlas_coords(tile) == node_atlas_coords["starting"]:
 			_tile_chains[-1].append(tile)
+			_all_tiles.append(tile)
 			return
 		dir_from_last_tile = relative_dir(_tile_chains[-1][-1], tile)
 	var wire_type: String
@@ -138,6 +146,7 @@ func add_wire(tile: Vector2i, exit_dir: Enums.Dir) -> void:
 			]
 		)
 	_tile_chains[-1].append(tile)
+	_all_tiles.append(tile)
 
 
 func relative_dir(from_tile: Vector2i, to_tile: Vector2i) -> Enums.Dir:
@@ -173,6 +182,7 @@ func update_nodes_and_wires(player_tile: Vector2i, old_tile: Vector2i) -> void:
 		if old_tile != starting_node:
 			set_cell(old_tile, 0, node_atlas_coords["inactive"])
 		_tile_chains[-1].pop_back()
+		_all_tiles.pop_back()
 	if (_tile_chains[-1].size() > 0 and player_tile == _tile_chains[-1][-1]):
 		if not (
 			get_cell_tile_data(player_tile)

@@ -7,3 +7,4 @@ const TILE_SIZE_PIXELS := Vector2i(16, 16)
 
 # Public Properties
 var current_scene_name: String
+var next_scene_name: String = ""

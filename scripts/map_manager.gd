@@ -23,6 +23,8 @@ var TotalNodes: int:
 			total += map_block.nodes_and_wires.TotalNodes
 		return total
 
+# Public variables
+var undo_moves_since_start: Array[Vector2i] = []
 
 # Private Variables
 var _block_ids: Array[int]
@@ -41,18 +43,46 @@ func reset_map() -> void:
 	load_blocks_from_center(active_block)
 	set_player_tile(starting_player_position)
 	active_block.nodes_and_wires.place_starting_node()
+	undo_moves_since_start.clear()
+
+
+func record_move(dir: Vector2i) -> void:
+	if active_block.BlockRect.has_point(%Player.TilePosition + dir):
+		print(-dir)
+		undo_moves_since_start.append(-dir)
+		return
+	var exit_dir: Vector2i = Enums.dir_vec_map[
+		active_block.approach_dirs[Enums.vec_dir_map[dir]]
+	]
+	print("exit dir: ", exit_dir)
+	undo_moves_since_start.append(exit_dir)
+	return
+
+
+func can_move(move_dir: Vector2i) -> bool:
+	if active_block.BlockRect.has_point(%Player.TilePosition + move_dir):
+		return true
+	var next_block_tile: Vector2i = player_tile_in_next_block(
+		Enums.vec_dir_map[move_dir]
+	)
+	var next_block: MapBlock = active_block.NeighborBlocks[
+		Enums.vec_dir_map[move_dir]
+	]
+	return next_block.is_open_tile(next_block_tile)
 
 
 func set_active_block(
-	block: MapBlock, old_block: MapBlock = null
+	block: MapBlock,
+	old_block: MapBlock = null,
+	exit_dir: Vector2i = Globals.NULL_TILE,
 ) -> void:
-	if old_block != null:
+	if old_block != null and old_block != block:
 		old_block.IsActive = false
 		old_block.nodes_and_wires.leave_block()
 	active_block = block
-	if old_block != null:
-		var entry_dir: Enums.Dir = Enums.vec_dir_map[
-			-Enums.dir_vec_map[block.NeighborBlocks.find_key(old_block)]
+	if old_block != null and old_block != block:
+		var entry_dir: Enums.Dir = old_block.approach_dirs[
+			Enums.vec_dir_map[exit_dir]
 		]
 		active_block.set_entry_dir(entry_dir)
 	active_block.IsActive = true
@@ -66,23 +96,23 @@ func load_nearest_blocks() -> void:
 	shift_player_by_block(Enums.vec_dir_map[exit_dir])
 	match exit_dir:
 		Vector2i.RIGHT:
-			load_blocks_from_center(active_block.neighbor_right)
+			load_blocks_from_center(active_block.neighbor_right, exit_dir)
 		Vector2i.LEFT:
-			load_blocks_from_center(active_block.neighbor_left)
+			load_blocks_from_center(active_block.neighbor_left, exit_dir)
 		Vector2i.UP:
-			load_blocks_from_center(active_block.neighbor_up)
+			load_blocks_from_center(active_block.neighbor_up, exit_dir)
 		Vector2i.DOWN:
-			load_blocks_from_center(active_block.neighbor_down)
+			load_blocks_from_center(active_block.neighbor_down, exit_dir)
 		_:
 			push_error("Invalid exit direction ", exit_dir, " found for Player.")
 	#shift_player_by_block(exit_dir)
 
 
 func load_blocks_from_center(
-	center_block: MapBlock,
+	center_block: MapBlock, exit_dir: Vector2i = Globals.NULL_TILE
 ) -> void:
 	if active_block != center_block:
-		set_active_block(center_block, active_block)
+		set_active_block(center_block, active_block, exit_dir)
 	# Position loaded blocks
 	active_block.position = Vector2.ZERO
 	if active_block.neighbor_up != null:
@@ -125,7 +155,7 @@ func load_blocks_from_center(
 	return
 
 
-func shift_player_by_block(dir: Enums.Dir) -> void:
+func player_tile_in_next_block(dir: Enums.Dir) -> Vector2i:
 	var approach_dir: Enums.Dir = active_block.approach_dirs[dir]
 	var to_block: MapBlock = active_block.NeighborBlocks[dir]
 	var tile_offset: int = active_block.neighbor_offsets[dir]
@@ -157,11 +187,16 @@ func shift_player_by_block(dir: Enums.Dir) -> void:
 			pres_coord = to_block.BlockSizeTiles.x - pres_coord - 1
 	pres_coord += (-1 if count_from_end else +1) * tile_offset
 
+	return Vector2i(
+		pres_coord if approach_dir in vert_dirs else edge_coord,
+		edge_coord if approach_dir in vert_dirs else pres_coord,
+	)
+
+
+func shift_player_by_block(dir: Enums.Dir) -> void:
+	var approach_dir: Enums.Dir = active_block.approach_dirs[dir]
 	set_player_tile(
-		Vector2i(
-			pres_coord if approach_dir in vert_dirs else edge_coord,
-			edge_coord if approach_dir in vert_dirs else pres_coord,
-		)
+		player_tile_in_next_block(dir)
 	)
 	# Player orientation should be opposite to the 'approach from' direction.
 	await %Player.sprite.animation_finished
