@@ -1,123 +1,77 @@
-[gd_scene load_steps=106 format=4 uid="uid://bpvohcmak3c2x"]
+[gd_scene load_steps=103 format=4 uid="uid://bagiq8uvcc4ro"]
 
-[ext_resource type="Script" uid="uid://bq6yhha3dwffh" path="res://scripts/level_manager.gd" id="1_mvorh"]
-[ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_hulh5"]
-[ext_resource type="Script" uid="uid://bmwrvkcicv7j4" path="res://scripts/dialog_manager.gd" id="3_yw11j"]
-[ext_resource type="Texture2D" uid="uid://fphgmeutoy78" path="res://sprites/cube_panel.png" id="4_icp1j"]
-[ext_resource type="FontFile" uid="uid://46uhdyfx21cf" path="res://fonts/PixeloidMono.ttf" id="5_4gpp4"]
-[ext_resource type="Texture2D" uid="uid://ct2vpqfoq64pl" path="res://sprites/enter_symbol.png" id="6_rdr40"]
-[ext_resource type="Script" uid="uid://dn8cbrj8l1tmr" path="res://scripts/continue_prompt.gd" id="7_q5jtg"]
-[ext_resource type="Texture2D" uid="uid://dlaxtp73dj4ni" path="res://tilesets/sources/robot_idle.png" id="8_ujhos"]
-[ext_resource type="Texture2D" uid="uid://b8f2imer78pxy" path="res://sprites/tutorial_diagram.png" id="9_icp1j"]
-[ext_resource type="Script" uid="uid://bb4fj5w22erkd" path="res://scripts/pause_screen.gd" id="9_rd3p3"]
-[ext_resource type="Texture2D" uid="uid://3qe6bp485cqc" path="res://sprites/controls_sprites.png" id="10_4gpp4"]
-[ext_resource type="Texture2D" uid="uid://c1ukjcr3bj6jm" path="res://sprites/exit_button_normal.png" id="10_kfo6a"]
-[ext_resource type="Texture2D" uid="uid://dd6qhxcxdtq1i" path="res://sprites/level_0_shape.png" id="11_4gpp4"]
-[ext_resource type="Texture2D" uid="uid://cj7p6vyl1h777" path="res://sprites/exit_button_pressed.png" id="11_p1hka"]
-[ext_resource type="Texture2D" uid="uid://cvwakegfxvod6" path="res://sprites/exit_button_hovered.png" id="12_8cdjg"]
-[ext_resource type="Script" uid="uid://bc47owkdqsdbp" path="res://scripts/win_dialog.gd" id="13_hulh5"]
-[ext_resource type="Script" uid="uid://cvhqfqafns1lm" path="res://scripts/map_manager.gd" id="13_qbbld"]
-[ext_resource type="Script" uid="uid://kq62wxarnwli" path="res://scripts/map_block.gd" id="14_gsjb5"]
-[ext_resource type="TileSet" uid="uid://ot12yrgktr4i" path="res://tilesets/two_color_space_tileset.tres" id="15_y3mmh"]
-[ext_resource type="TileSet" uid="uid://bjm8dm4q83nd8" path="res://tilesets/nodes_and_wires.tres" id="16_y4xkf"]
-[ext_resource type="Script" uid="uid://cyg4kuvi2nlhe" path="res://scripts/nodes_and_wires.gd" id="17_pr0p8"]
-[ext_resource type="Script" uid="uid://3igi3vc7wm3i" path="res://scripts/player/player.gd" id="18_1pmpf"]
-[ext_resource type="Texture2D" uid="uid://3v0vd5dksjnc" path="res://tilesets/sources/robot_motion.png" id="19_wxy8d"]
-[ext_resource type="Script" uid="uid://dxp3b2kd1bkkv" path="res://scripts/player/player_rays.gd" id="20_246hf"]
-[ext_resource type="Texture2D" uid="uid://dlmbfr05wrrru" path="res://tilesets/sources/inner_edge_tile.png" id="22_p1hka"]
-[ext_resource type="Script" uid="uid://lm5f2q6ych6k" path="res://scripts/map_edge_display.gd" id="23_8cdjg"]
-[ext_resource type="Texture2D" uid="uid://boaj3nm3jxtyj" path="res://sprites/left_arrow.png" id="24_qbbld"]
-[ext_resource type="Texture2D" uid="uid://cjpe07tw2dul" path="res://sprites/right_arrow.png" id="25_gsjb5"]
-[ext_resource type="Texture2D" uid="uid://iemuavr1ndih" path="res://sprites/up_arrow.png" id="26_y3mmh"]
-[ext_resource type="Texture2D" uid="uid://j7mrg4exvo45" path="res://sprites/down_arrow.png" id="27_y4xkf"]
+[ext_resource type="Script" uid="uid://bq6yhha3dwffh" path="res://scripts/level_manager.gd" id="1_t4umt"]
+[ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_4yk0h"]
+[ext_resource type="Script" uid="uid://bmwrvkcicv7j4" path="res://scripts/dialog_manager.gd" id="3_vmrhw"]
+[ext_resource type="Texture2D" uid="uid://fphgmeutoy78" path="res://sprites/cube_panel.png" id="4_cfnpk"]
+[ext_resource type="FontFile" uid="uid://46uhdyfx21cf" path="res://fonts/PixeloidMono.ttf" id="5_wvtie"]
+[ext_resource type="Texture2D" uid="uid://ct2vpqfoq64pl" path="res://sprites/enter_symbol.png" id="6_o8s4s"]
+[ext_resource type="Script" uid="uid://dn8cbrj8l1tmr" path="res://scripts/continue_prompt.gd" id="7_ebb2h"]
+[ext_resource type="Texture2D" uid="uid://dlaxtp73dj4ni" path="res://tilesets/sources/robot_idle.png" id="8_row31"]
+[ext_resource type="Texture2D" uid="uid://duh4dpk88ad25" path="res://sprites/level_1_shape.png" id="9_0qwwm"]
+[ext_resource type="Texture2D" uid="uid://3qe6bp485cqc" path="res://sprites/controls_sprites.png" id="10_hvllt"]
+[ext_resource type="Script" uid="uid://bb4fj5w22erkd" path="res://scripts/pause_screen.gd" id="12_svqqs"]
+[ext_resource type="Texture2D" uid="uid://c1ukjcr3bj6jm" path="res://sprites/exit_button_normal.png" id="13_2to4m"]
+[ext_resource type="Texture2D" uid="uid://cj7p6vyl1h777" path="res://sprites/exit_button_pressed.png" id="14_kc3v0"]
+[ext_resource type="Texture2D" uid="uid://cvwakegfxvod6" path="res://sprites/exit_button_hovered.png" id="15_prmli"]
+[ext_resource type="Script" uid="uid://bc47owkdqsdbp" path="res://scripts/win_dialog.gd" id="16_dwx2n"]
+[ext_resource type="Script" uid="uid://cvhqfqafns1lm" path="res://scripts/map_manager.gd" id="17_wtkl1"]
+[ext_resource type="Script" uid="uid://kq62wxarnwli" path="res://scripts/map_block.gd" id="18_ovy75"]
+[ext_resource type="TileSet" uid="uid://ot12yrgktr4i" path="res://tilesets/two_color_space_tileset.tres" id="19_wk6bc"]
+[ext_resource type="TileSet" uid="uid://bjm8dm4q83nd8" path="res://tilesets/nodes_and_wires.tres" id="20_ugk5q"]
+[ext_resource type="Script" uid="uid://cyg4kuvi2nlhe" path="res://scripts/nodes_and_wires.gd" id="21_4u6u3"]
+[ext_resource type="Texture2D" uid="uid://dlmbfr05wrrru" path="res://tilesets/sources/inner_edge_tile.png" id="22_i3rdk"]
+[ext_resource type="Script" uid="uid://lm5f2q6ych6k" path="res://scripts/map_edge_display.gd" id="23_yvv08"]
+[ext_resource type="Texture2D" uid="uid://boaj3nm3jxtyj" path="res://sprites/left_arrow.png" id="24_bccrp"]
+[ext_resource type="Texture2D" uid="uid://cjpe07tw2dul" path="res://sprites/right_arrow.png" id="25_20f45"]
+[ext_resource type="Texture2D" uid="uid://iemuavr1ndih" path="res://sprites/up_arrow.png" id="26_6bay7"]
+[ext_resource type="Texture2D" uid="uid://j7mrg4exvo45" path="res://sprites/down_arrow.png" id="27_to6s4"]
+[ext_resource type="Script" uid="uid://3igi3vc7wm3i" path="res://scripts/player/player.gd" id="28_7tcdn"]
+[ext_resource type="Texture2D" uid="uid://3v0vd5dksjnc" path="res://tilesets/sources/robot_motion.png" id="29_4gp5p"]
+[ext_resource type="Script" uid="uid://dxp3b2kd1bkkv" path="res://scripts/player/player_rays.gd" id="30_y73h4"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rdr40"]
-texture = ExtResource("4_icp1j")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5jtg"]
+texture = ExtResource("4_cfnpk")
 texture_margin_left = 13.0
 texture_margin_top = 13.0
 texture_margin_right = 13.0
 texture_margin_bottom = 13.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o30b1"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ka6nf"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ws7p0"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbuqv"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kl1bc"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvjnh"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abh1i"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pab1"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o5e3"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_q5jtg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o30b1")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_ka6nf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ws7p0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbuqv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kl1bc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xvjnh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_abh1i")
-}, {
-"duration": 5.1,
-"texture": SubResource("AtlasTexture_5pab1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbuqv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6o5e3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5jtg"]
-texture = ExtResource("4_icp1j")
-texture_margin_left = 13.0
-texture_margin_top = 13.0
-texture_margin_right = 13.0
-texture_margin_bottom = 13.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ujhos"]
 animations = [{
@@ -166,7 +120,7 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5adam"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2e8ei"]
-texture = ExtResource("4_icp1j")
+texture = ExtResource("4_cfnpk")
 texture_margin_left = 13.0
 texture_margin_top = 13.0
 texture_margin_right = 13.0
@@ -211,218 +165,218 @@ animations = [{
 }]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pr0p8"]
-texture = ExtResource("22_p1hka")
+texture = ExtResource("22_i3rdk")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_1pmpf"]
 sources/0 = SubResource("TileSetAtlasSource_pr0p8")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yqn4"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88dq5"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84d7x"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw8yf"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2e8ei"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a67nr"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ww2sd"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0swx"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_487ge"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0iqq"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3dafp"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5adam"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obqqf"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujvvg"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(64, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evb42"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(80, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ag5us"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(96, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64jqc"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(112, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6owg1"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr841"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7krh1"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuuq1"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j26us"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(64, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8048"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(80, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfubq"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(96, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_017k6"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(112, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r88aq"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tnxi"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uleh2"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_si0ri"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgnxr"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03xca"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(80, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3p12"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hx5ex"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(112, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8xgt"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipudq"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epk8t"]
-atlas = ExtResource("8_ujhos")
+atlas = ExtResource("8_row31")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypm0w"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1vg2"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66egd"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pn30m"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tkpf"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n21t3"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj5tf"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1rjf"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awexi"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2sa0"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th4bc"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72tvo"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yn3v6"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxfbv"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v87q8"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pyf8l"]
-atlas = ExtResource("19_wxy8d")
+atlas = ExtResource("29_4gp5p")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sv7xr"]
@@ -648,7 +602,7 @@ animations = [{
 size = Vector2(8, 8)
 
 [node name="LevelManager" type="Node2D"]
-script = ExtResource("1_mvorh")
+script = ExtResource("1_t4umt")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -661,11 +615,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_hulh5")
+texture = ExtResource("2_4yk0h")
 stretch_mode = 1
 
 [node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("3_yw11j")
+script = ExtResource("3_vmrhw")
 
 [node name="DialogBox" type="Control" parent="DialogCanvasLayer"]
 layout_mode = 3
@@ -688,15 +642,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_rdr40")
+theme_override_styles/panel = SubResource("StyleBoxTexture_q5jtg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogCanvasLayer/DialogBox/PanelContainer"]
-visible = false
 texture_filter = 1
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("5_4gpp4")
+theme_override_fonts/normal_font = ExtResource("5_wvtie")
 theme_override_font_sizes/normal_font_size = 20
-text = "Cube Trotter"
+text = "LEVEL 1:
+CUBE
+
+
+
+
+
+
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -713,110 +674,18 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("6_rdr40")
+texture = ExtResource("6_o8s4s")
 expand_mode = 1
-script = ExtResource("7_q5jtg")
+script = ExtResource("7_ebb2h")
 
 [node name="PlayerAvatarAnimation" type="AnimatedSprite2D" parent="DialogCanvasLayer/DialogBox"]
-texture_filter = 1
-position = Vector2(32, 208)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_q5jtg")
-autoplay = "default"
-
-[node name="TextureRect" type="TextureRect" parent="DialogCanvasLayer/DialogBox"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -176.0
-offset_top = 8.0
-offset_right = 173.0
-offset_bottom = 120.0
-grow_horizontal = 2
-texture = ExtResource("9_icp1j")
-
-[node name="TextureRect2" type="TextureRect" parent="DialogCanvasLayer/DialogBox"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -88.0
-offset_top = -96.0
-offset_right = 97.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("10_4gpp4")
-
-[node name="DialogBox2" type="Control" parent="DialogCanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 24.0
-offset_top = -216.0
-offset_right = -24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="DialogCanvasLayer/DialogBox2"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_q5jtg")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogCanvasLayer/DialogBox2/PanelContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("5_4gpp4")
-theme_override_font_sizes/normal_font_size = 20
-text = "LEVEL 0:
-SHEET OF PAPER
-
-
-
-
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ContinuePrompt" type="TextureRect" parent="DialogCanvasLayer/DialogBox2"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -73.0
-offset_top = -40.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("6_rdr40")
-expand_mode = 1
-script = ExtResource("7_q5jtg")
-
-[node name="PlayerAvatarAnimation" type="AnimatedSprite2D" parent="DialogCanvasLayer/DialogBox2"]
 texture_filter = 1
 position = Vector2(32, 208)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ujhos")
 autoplay = "default"
 
-[node name="TextureRect" type="TextureRect" parent="DialogCanvasLayer/DialogBox2"]
+[node name="TextureRect" type="TextureRect" parent="DialogCanvasLayer/DialogBox"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
@@ -824,13 +693,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -128.0
-offset_right = 68.0
-offset_bottom = -59.0
+offset_left = -65.0
+offset_top = -166.0
+offset_right = 67.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("11_4gpp4")
+texture = ExtResource("9_0qwwm")
 
 [node name="MiscCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -851,7 +720,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("9_rd3p3")
+script = ExtResource("12_svqqs")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MiscCanvasLayer/Control/PauseScreen"]
 texture_filter = 1
@@ -861,7 +730,7 @@ anchor_right = 1.0
 offset_top = 62.0
 offset_bottom = 122.0
 grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("5_4gpp4")
+theme_override_fonts/normal_font = ExtResource("5_wvtie")
 theme_override_font_sizes/normal_font_size = 20
 text = "PAUSED"
 horizontal_alignment = 1
@@ -886,7 +755,7 @@ theme_override_colors/font_hover_color = Color(0.101961, 0.92549, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.60933, 0.60933, 0.60933, 1)
-theme_override_fonts/font = ExtResource("5_4gpp4")
+theme_override_fonts/font = ExtResource("5_wvtie")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_487ge")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d0iqq")
@@ -901,7 +770,7 @@ theme_override_colors/font_hover_color = Color(0.101961, 0.92549, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.60933, 0.60933, 0.60933, 1)
-theme_override_fonts/font = ExtResource("5_4gpp4")
+theme_override_fonts/font = ExtResource("5_wvtie")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_487ge")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d0iqq")
@@ -916,7 +785,7 @@ theme_override_colors/font_hover_color = Color(0.101961, 0.92549, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.60933, 0.60933, 0.60933, 1)
-theme_override_fonts/font = ExtResource("5_4gpp4")
+theme_override_fonts/font = ExtResource("5_wvtie")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_487ge")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d0iqq")
@@ -938,7 +807,7 @@ offset_right = 97.0
 offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("10_4gpp4")
+texture = ExtResource("10_hvllt")
 
 [node name="PauseButton" type="TextureButton" parent="MiscCanvasLayer/Control"]
 unique_name_in_owner = true
@@ -953,10 +822,10 @@ offset_right = 40.0
 offset_bottom = -4.0
 grow_vertical = 0
 focus_mode = 0
-texture_normal = ExtResource("10_kfo6a")
-texture_pressed = ExtResource("11_p1hka")
-texture_hover = ExtResource("12_8cdjg")
-texture_disabled = ExtResource("11_p1hka")
+texture_normal = ExtResource("13_2to4m")
+texture_pressed = ExtResource("14_kc3v0")
+texture_hover = ExtResource("15_prmli")
+texture_disabled = ExtResource("14_kc3v0")
 
 [node name="WinDialog" type="Control" parent="MiscCanvasLayer/Control"]
 unique_name_in_owner = true
@@ -972,7 +841,7 @@ offset_right = -24.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("13_hulh5")
+script = ExtResource("16_dwx2n")
 
 [node name="PanelContainer" type="PanelContainer" parent="MiscCanvasLayer/Control/WinDialog"]
 texture_filter = 1
@@ -987,7 +856,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2e8ei")
 [node name="RichTextLabel" type="RichTextLabel" parent="MiscCanvasLayer/Control/WinDialog/PanelContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("5_4gpp4")
+theme_override_fonts/normal_font = ExtResource("5_wvtie")
 theme_override_font_sizes/normal_font_size = 20
 text = "LEVEL COMPLETE!
 
@@ -1011,9 +880,9 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("6_rdr40")
+texture = ExtResource("6_o8s4s")
 expand_mode = 1
-script = ExtResource("7_q5jtg")
+script = ExtResource("7_ebb2h")
 
 [node name="PlayerAvatarAnimation" type="AnimatedSprite2D" parent="MiscCanvasLayer/Control/WinDialog"]
 texture_filter = 1
@@ -1026,13 +895,13 @@ frame_progress = 0.104828
 [node name="MapManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1, 1)
-script = ExtResource("13_qbbld")
+script = ExtResource("17_wtkl1")
 starting_player_position = Vector2i(2, 2)
 metadata/_custom_type_script = "uid://cvhqfqafns1lm"
 
 [node name="BackBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]
 position = Vector2(664, -57)
-script = ExtResource("14_gsjb5")
+script = ExtResource("18_ovy75")
 neighbor_up = NodePath("../BottomBlock")
 neighbor_down = NodePath("../TopBlock")
 neighbor_left = NodePath("../LeftBlock")
@@ -1060,23 +929,23 @@ metadata/_custom_type_script = "uid://kq62wxarnwli"
 [node name="Background" type="TileMapLayer" parent="MapManager/BackBlock"]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAAABQABAAAAAAABAAEABQAAAAIAAAABAAIABQAAAAIAAAABAAMABQAAAAIAAAABAAQABQAAAAIAAAACAAAABQABAAAAAAACAAEABQAAAAIAAAACAAIABQAAAAIAAAACAAMABQAAAAIAAAACAAQABQAAAAIAAAADAAAABQABAAAAAAADAAEABQAAAAIAAAADAAIABQAAAAIAAAADAAMABQAAAAIAAAADAAQABQAAAAIAAAAEAAAABQABAAAAAAAEAAEABQAAAAIAAAAEAAIABQAAAAIAAAAEAAMABQAAAAIAAAAEAAQABQAAAAIAAAAFAAAABQABAAAAAAAFAAEABQAAAAIAAAAFAAIABQAAAAIAAAAFAAMABQAAAAIAAAAFAAQABQAAAAIAAAABAAUABQAAAAIAAAACAAUABQAAAAIAAAADAAUABQAAAAIAAAAEAAUABQAAAAIAAAAFAAUABQAAAAIAAAABAAYABQAAAAIAAAABAAcABQADAAAAAAACAAYABQAAAAIAAAACAAcABQADAAAAAAADAAYABQAAAAIAAAADAAcABQADAAAAAAAEAAYABQAAAAIAAAAEAAcABQADAAAAAAAFAAYABQAAAAIAAAAFAAcABQADAAAAAAAGAAAABQABAAAAAAAGAAEABQAAAAIAAAAGAAIABQAAAAIAAAAGAAMABQAAAAIAAAAGAAQABQAAAAIAAAAGAAUABQAAAAIAAAAGAAYABQAAAAIAAAAGAAcABQADAAAAAAAHAAAABQAFAAAAAAAHAAEABQACAAAAAAAHAAIABQACAAAAAAAHAAMABQACAAAAAAAHAAQABQACAAAAAAAHAAUABQACAAAAAAAHAAYABQACAAAAAAAHAAcABQAAAAEAAAAAAAcABQABAAEAAAAAAAYABQAAAAAAAAAAAAUABQAAAAAAAAAAAAQABQAAAAAAAAAAAAMABQAAAAAAAAAAAAIABQAAAAAAAAAAAAEABQAAAAAAAAAAAAAABQAEAAAAAAA=")
-tile_set = ExtResource("15_y3mmh")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="Ground" type="TileMapLayer" parent="MapManager/BackBlock"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAABAAQAAAADAAAAAAAEAAMAAAACAAEAAAABAAEAAAABAAEAAAAEAAQAAAADAAMAAAABAAIAAQACAAEAAAABAAUAAQABAAIAAAADAAEAAQADAAIAAAAFAAQAAQADAAEAAAAFAAUAAQAAAAIAAAAEAAUAAQADAAEAAAADAAUAAQAAAAIAAAA=")
-tile_set = ExtResource("15_y3mmh")
+tile_map_data = PackedByteArray("AAABAAQAAAADAAAAAAAEAAMAAAACAAEAAAABAAEAAgACAAIAAAAEAAQAAAADAAMAAAABAAIAAgADAAEAAAABAAUAAgACAAIAAAADAAEAAQADAAIAAAAFAAQAAQADAAEAAAAFAAUAAQAAAAIAAAAEAAUAAQADAAEAAAADAAUAAQAAAAIAAAAFAAYAAgABAAEAAAAGAAYAAgACAAEAAAAGAAUAAgACAAAAAAAGAAQAAgAAAAEAAAAGAAIAAgACAAIAAAAGAAEAAgADAAAAAAAFAAEAAgADAAMAAAAEAAEAAgABAAEAAAACAAEAAgADAAIAAAABAAMAAgACAAIAAAABAAYAAgABAAEAAAACAAYAAgADAAEAAAADAAYAAgACAAMAAAADAAcAAgAAAAMAAAAFAAcAAgADAAEAAAAHAAQAAgADAAEAAAAHAAIAAgADAAEAAAAAAAMAAgACAAAAAAAAAAUAAgABAAEAAAACAAAAAgADAAMAAAAEAAAAAgADAAAAAAA=")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/BackBlock"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAACAAIAAAAAAAEAAAAFAAIAAAAAAAAAAAAFAAUAAAAAAAAAAAACAAUAAAAAAAAAAAA=")
-tile_set = ExtResource("16_y4xkf")
-script = ExtResource("17_pr0p8")
+tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAAFAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAIAAAAAAAEAAAA=")
+tile_set = ExtResource("20_ugk5q")
+script = ExtResource("21_4u6u3")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
 
 [node name="TopBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]
 position = Vector2(663, 78)
-script = ExtResource("14_gsjb5")
+script = ExtResource("18_ovy75")
 neighbor_up = NodePath("../BackBlock")
 neighbor_down = NodePath("../FrontBlock")
 neighbor_left = NodePath("../LeftBlock")
@@ -1104,21 +973,23 @@ metadata/_custom_type_script = "uid://kq62wxarnwli"
 [node name="Background" type="TileMapLayer" parent="MapManager/TopBlock"]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAAABQABAAAAAAABAAEABQAAAAIAAAABAAIABQAAAAIAAAABAAMABQAAAAIAAAABAAQABQAAAAIAAAACAAAABQABAAAAAAACAAEABQAAAAIAAAACAAIABQAAAAIAAAACAAMABQAAAAIAAAACAAQABQAAAAIAAAADAAAABQABAAAAAAADAAEABQAAAAIAAAADAAIABQAAAAIAAAADAAMABQAAAAIAAAADAAQABQAAAAIAAAAEAAAABQABAAAAAAAEAAEABQAAAAIAAAAEAAIABQAAAAIAAAAEAAMABQAAAAIAAAAEAAQABQAAAAIAAAAFAAAABQABAAAAAAAFAAEABQAAAAIAAAAFAAIABQAAAAIAAAAFAAMABQAAAAIAAAAFAAQABQAAAAIAAAABAAUABQAAAAIAAAACAAUABQAAAAIAAAADAAUABQAAAAIAAAAEAAUABQAAAAIAAAAFAAUABQAAAAIAAAABAAYABQAAAAIAAAABAAcABQADAAAAAAACAAYABQAAAAIAAAACAAcABQADAAAAAAADAAYABQAAAAIAAAADAAcABQADAAAAAAAEAAYABQAAAAIAAAAEAAcABQADAAAAAAAFAAYABQAAAAIAAAAFAAcABQADAAAAAAAGAAAABQABAAAAAAAGAAEABQAAAAIAAAAGAAIABQAAAAIAAAAGAAMABQAAAAIAAAAGAAQABQAAAAIAAAAGAAUABQAAAAIAAAAGAAYABQAAAAIAAAAGAAcABQADAAAAAAAHAAAABQAFAAAAAAAHAAEABQACAAAAAAAHAAIABQACAAAAAAAHAAMABQACAAAAAAAHAAQABQACAAAAAAAHAAUABQACAAAAAAAHAAYABQACAAAAAAAHAAcABQAAAAEAAAAAAAcABQABAAEAAAAAAAYABQAAAAAAAAAAAAUABQAAAAAAAAAAAAQABQAAAAAAAAAAAAMABQAAAAAAAAAAAAIABQAAAAAAAAAAAAEABQAAAAAAAAAAAAAABQAEAAAAAAA=")
-tile_set = ExtResource("15_y3mmh")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="Ground" type="TileMapLayer" parent="MapManager/TopBlock"]
 texture_filter = 1
-tile_set = ExtResource("15_y3mmh")
+tile_map_data = PackedByteArray("AAADAAAAAgAAAAEAAAADAAEAAgADAAAAAAACAAEAAgACAAAAAAABAAEAAgABAAMAAAABAAIAAgABAAMAAAABAAMAAgACAAIAAAAAAAMAAgAAAAEAAAAAAAUAAgACAAEAAAABAAUAAgADAAAAAAABAAYAAgADAAIAAAACAAYAAgAAAAMAAAADAAYAAgABAAMAAAADAAcAAgADAAAAAAAFAAcAAgADAAMAAAAFAAYAAgACAAMAAAAGAAYAAgACAAAAAAAGAAUAAgADAAAAAAAGAAQAAgABAAEAAAAHAAQAAgADAAAAAAAHAAIAAgACAAEAAAAGAAIAAgAAAAMAAAAGAAEAAgABAAMAAAAFAAEAAgABAAEAAAAFAAAAAgADAAAAAAACAAQAAQADAAEAAAACAAUAAQABAAAAAAADAAUAAQABAAAAAAAEAAUAAQAAAAMAAAAFAAQAAQABAAAAAAAFAAMAAQABAAAAAAAFAAIAAQAAAAIAAAAEAAIAAQABAAAAAAADAAIAAQAAAAAAAAACAAIAAQAAAAIAAAACAAMAAQABAAAAAAADAAMAAQABAAAAAAAEAAcAAQAAAAIAAAAEAAYAAQADAAEAAAADAAQAAQABAAAAAAAEAAMAAQABAAAAAAAFAAUAAQADAAEAAAAGAAMAAQADAAEAAAAHAAMAAQABAAAAAAAEAAAAAQABAAAAAAAEAAEAAQADAAEAAAABAAQAAQAAAAMAAAAAAAQAAQAAAAAAAAA=")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/TopBlock"]
 texture_filter = 1
-tile_set = ExtResource("16_y4xkf")
-script = ExtResource("17_pr0p8")
+tile_map_data = PackedByteArray("AAAEAAQAAAAAAAAAAAA=")
+tile_set = ExtResource("20_ugk5q")
+script = ExtResource("21_4u6u3")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
 
 [node name="FrontBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]
 position = Vector2(663, 214)
-script = ExtResource("14_gsjb5")
+script = ExtResource("18_ovy75")
 neighbor_up = NodePath("../TopBlock")
 neighbor_down = NodePath("../BottomBlock")
 neighbor_left = NodePath("../LeftBlock")
@@ -1146,21 +1017,23 @@ metadata/_custom_type_script = "uid://kq62wxarnwli"
 [node name="Background" type="TileMapLayer" parent="MapManager/FrontBlock"]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAAABQABAAAAAAABAAEABQAAAAIAAAABAAIABQAAAAIAAAABAAMABQAAAAIAAAABAAQABQAAAAIAAAACAAAABQABAAAAAAACAAEABQAAAAIAAAACAAIABQAAAAIAAAACAAMABQAAAAIAAAACAAQABQAAAAIAAAADAAAABQABAAAAAAADAAEABQAAAAIAAAADAAIABQAAAAIAAAADAAMABQAAAAIAAAADAAQABQAAAAIAAAAEAAAABQABAAAAAAAEAAEABQAAAAIAAAAEAAIABQAAAAIAAAAEAAMABQAAAAIAAAAEAAQABQAAAAIAAAAFAAAABQABAAAAAAAFAAEABQAAAAIAAAAFAAIABQAAAAIAAAAFAAMABQAAAAIAAAAFAAQABQAAAAIAAAABAAUABQAAAAIAAAACAAUABQAAAAIAAAADAAUABQAAAAIAAAAEAAUABQAAAAIAAAAFAAUABQAAAAIAAAABAAYABQAAAAIAAAABAAcABQADAAAAAAACAAYABQAAAAIAAAACAAcABQADAAAAAAADAAYABQAAAAIAAAADAAcABQADAAAAAAAEAAYABQAAAAIAAAAEAAcABQADAAAAAAAFAAYABQAAAAIAAAAFAAcABQADAAAAAAAGAAAABQABAAAAAAAGAAEABQAAAAIAAAAGAAIABQAAAAIAAAAGAAMABQAAAAIAAAAGAAQABQAAAAIAAAAGAAUABQAAAAIAAAAGAAYABQAAAAIAAAAGAAcABQADAAAAAAAHAAAABQAFAAAAAAAHAAEABQACAAAAAAAHAAIABQACAAAAAAAHAAMABQACAAAAAAAHAAQABQACAAAAAAAHAAUABQACAAAAAAAHAAYABQACAAAAAAAHAAcABQAAAAEAAAAAAAcABQABAAEAAAAAAAYABQAAAAAAAAAAAAUABQAAAAAAAAAAAAQABQAAAAAAAAAAAAMABQAAAAAAAAAAAAIABQAAAAAAAAAAAAEABQAAAAAAAAAAAAAABQAEAAAAAAA=")
-tile_set = ExtResource("15_y3mmh")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="Ground" type="TileMapLayer" parent="MapManager/FrontBlock"]
 texture_filter = 1
-tile_set = ExtResource("15_y3mmh")
+tile_map_data = PackedByteArray("AAADAAAAAgADAAMAAAADAAEAAgACAAEAAAACAAEAAgADAAAAAAABAAEAAgADAAMAAAABAAIAAgABAAMAAAABAAMAAgACAAAAAAAAAAMAAgACAAMAAAAAAAUAAgADAAEAAAABAAUAAgADAAIAAAABAAYAAgACAAIAAAACAAYAAgADAAMAAAADAAYAAgADAAEAAAADAAcAAgABAAMAAAAFAAcAAgACAAEAAAAFAAYAAgADAAIAAAAGAAYAAgABAAMAAAAGAAUAAgACAAAAAAAGAAQAAgADAAIAAAAHAAQAAgABAAMAAAAHAAIAAgACAAEAAAAGAAIAAgABAAMAAAAGAAEAAgAAAAMAAAAFAAEAAgABAAMAAAAFAAAAAgACAAAAAAACAAIAAAABAAMAAAADAAIAAAAAAAIAAAADAAMAAAADAAEAAAAEAAMAAAAAAAIAAAAEAAQAAAABAAMAAAAFAAQAAAABAAIAAAAFAAUAAAAAAAIAAAAEAAUAAAABAAEAAAADAAUAAAADAAEAAAAHAAMAAAAAAAMAAAAHAAEAAAAAAAIAAAAGAAAAAAADAAIAAAAGAAcAAAABAAAAAAAHAAcAAAACAAMAAAAHAAYAAAACAAMAAAABAAQAAAACAAIAAAAAAAEAAAADAAIAAAACAAAAAAACAAIAAAACAAcAAAACAAMAAAABAAcAAAAAAAAAAAA=")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/FrontBlock"]
 texture_filter = 1
-tile_set = ExtResource("16_y4xkf")
-script = ExtResource("17_pr0p8")
+tile_map_data = PackedByteArray("AAAFAAMAAAAAAAAAAAA=")
+tile_set = ExtResource("20_ugk5q")
+script = ExtResource("21_4u6u3")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
 
 [node name="BottomBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]
 position = Vector2(663, 350)
-script = ExtResource("14_gsjb5")
+script = ExtResource("18_ovy75")
 neighbor_up = NodePath("../FrontBlock")
 neighbor_down = NodePath("../BackBlock")
 neighbor_left = NodePath("../LeftBlock")
@@ -1188,21 +1061,23 @@ metadata/_custom_type_script = "uid://kq62wxarnwli"
 [node name="Background" type="TileMapLayer" parent="MapManager/BottomBlock"]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAAABQABAAAAAAABAAEABQAAAAIAAAABAAIABQAAAAIAAAABAAMABQAAAAIAAAABAAQABQAAAAIAAAACAAAABQABAAAAAAACAAEABQAAAAIAAAACAAIABQAAAAIAAAACAAMABQAAAAIAAAACAAQABQAAAAIAAAADAAAABQABAAAAAAADAAEABQAAAAIAAAADAAIABQAAAAIAAAADAAMABQAAAAIAAAADAAQABQAAAAIAAAAEAAAABQABAAAAAAAEAAEABQAAAAIAAAAEAAIABQAAAAIAAAAEAAMABQAAAAIAAAAEAAQABQAAAAIAAAAFAAAABQABAAAAAAAFAAEABQAAAAIAAAAFAAIABQAAAAIAAAAFAAMABQAAAAIAAAAFAAQABQAAAAIAAAABAAUABQAAAAIAAAACAAUABQAAAAIAAAADAAUABQAAAAIAAAAEAAUABQAAAAIAAAAFAAUABQAAAAIAAAABAAYABQAAAAIAAAABAAcABQADAAAAAAACAAYABQAAAAIAAAACAAcABQADAAAAAAADAAYABQAAAAIAAAADAAcABQADAAAAAAAEAAYABQAAAAIAAAAEAAcABQADAAAAAAAFAAYABQAAAAIAAAAFAAcABQADAAAAAAAGAAAABQABAAAAAAAGAAEABQAAAAIAAAAGAAIABQAAAAIAAAAGAAMABQAAAAIAAAAGAAQABQAAAAIAAAAGAAUABQAAAAIAAAAGAAYABQAAAAIAAAAGAAcABQADAAAAAAAHAAAABQAFAAAAAAAHAAEABQACAAAAAAAHAAIABQACAAAAAAAHAAMABQACAAAAAAAHAAQABQACAAAAAAAHAAUABQACAAAAAAAHAAYABQACAAAAAAAHAAcABQAAAAEAAAAAAAcABQABAAEAAAAAAAYABQAAAAAAAAAAAAUABQAAAAAAAAAAAAQABQAAAAAAAAAAAAMABQAAAAAAAAAAAAIABQAAAAAAAAAAAAEABQAAAAAAAAAAAAAABQAEAAAAAAA=")
-tile_set = ExtResource("15_y3mmh")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="Ground" type="TileMapLayer" parent="MapManager/BottomBlock"]
 texture_filter = 1
-tile_set = ExtResource("15_y3mmh")
+tile_map_data = PackedByteArray("AAADAAAAAgACAAMAAAADAAEAAgADAAMAAAACAAEAAgACAAAAAAABAAEAAgADAAMAAAABAAIAAgADAAIAAAABAAMAAgACAAMAAAAAAAMAAgABAAMAAAAAAAUAAgACAAIAAAABAAUAAgACAAAAAAABAAYAAgADAAMAAAACAAYAAgACAAAAAAAFAAYAAgADAAMAAAAGAAYAAgACAAIAAAAGAAUAAgACAAEAAAAGAAQAAgAAAAEAAAAHAAQAAgADAAEAAAAHAAIAAgACAAMAAAAGAAIAAgADAAMAAAAGAAEAAgACAAIAAAAFAAEAAgACAAAAAAAFAAAAAgACAAMAAAAAAAIAAgAAAAAAAAAAAAEAAgABAAIAAAAAAAAAAgABAAIAAAABAAAAAgAAAAAAAAACAAAAAgABAAAAAAAGAAAAAgAAAAAAAAAHAAAAAgABAAIAAAAHAAEAAgABAAIAAAAHAAUAAgABAAAAAAAHAAYAAgABAAIAAAAHAAcAAgAAAAAAAAAGAAcAAgAAAAIAAAACAAcAAgADAAMAAAABAAcAAgAAAAIAAAAAAAcAAgAAAAAAAAAAAAYAAgAAAAIAAAAEAAYAAgADAAEAAAAEAAcAAgACAAAAAAAFAAcAAgABAAIAAAA=")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/BottomBlock"]
 texture_filter = 1
-tile_set = ExtResource("16_y4xkf")
-script = ExtResource("17_pr0p8")
+tile_map_data = PackedByteArray("AAAEAAQAAAAAAAAAAAA=")
+tile_set = ExtResource("20_ugk5q")
+script = ExtResource("21_4u6u3")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
 
 [node name="LeftBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]
 position = Vector2(527, 214)
-script = ExtResource("14_gsjb5")
+script = ExtResource("18_ovy75")
 neighbor_up = NodePath("../TopBlock")
 neighbor_down = NodePath("../BottomBlock")
 neighbor_left = NodePath("../BackBlock")
@@ -1230,21 +1105,23 @@ metadata/_custom_type_script = "uid://kq62wxarnwli"
 [node name="Background" type="TileMapLayer" parent="MapManager/LeftBlock"]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAAABQABAAAAAAABAAEABQAAAAIAAAABAAIABQAAAAIAAAABAAMABQAAAAIAAAABAAQABQAAAAIAAAACAAAABQABAAAAAAACAAEABQAAAAIAAAACAAIABQAAAAIAAAACAAMABQAAAAIAAAACAAQABQAAAAIAAAADAAAABQABAAAAAAADAAEABQAAAAIAAAADAAIABQAAAAIAAAADAAMABQAAAAIAAAADAAQABQAAAAIAAAAEAAAABQABAAAAAAAEAAEABQAAAAIAAAAEAAIABQAAAAIAAAAEAAMABQAAAAIAAAAEAAQABQAAAAIAAAAFAAAABQABAAAAAAAFAAEABQAAAAIAAAAFAAIABQAAAAIAAAAFAAMABQAAAAIAAAAFAAQABQAAAAIAAAABAAUABQAAAAIAAAACAAUABQAAAAIAAAADAAUABQAAAAIAAAAEAAUABQAAAAIAAAAFAAUABQAAAAIAAAABAAYABQAAAAIAAAABAAcABQADAAAAAAACAAYABQAAAAIAAAACAAcABQADAAAAAAADAAYABQAAAAIAAAADAAcABQADAAAAAAAEAAYABQAAAAIAAAAEAAcABQADAAAAAAAFAAYABQAAAAIAAAAFAAcABQADAAAAAAAGAAAABQABAAAAAAAGAAEABQAAAAIAAAAGAAIABQAAAAIAAAAGAAMABQAAAAIAAAAGAAQABQAAAAIAAAAGAAUABQAAAAIAAAAGAAYABQAAAAIAAAAGAAcABQADAAAAAAAHAAAABQAFAAAAAAAHAAEABQACAAAAAAAHAAIABQACAAAAAAAHAAMABQACAAAAAAAHAAQABQACAAAAAAAHAAUABQACAAAAAAAHAAYABQACAAAAAAAHAAcABQAAAAEAAAAAAAcABQABAAEAAAAAAAYABQAAAAAAAAAAAAUABQAAAAAAAAAAAAQABQAAAAAAAAAAAAMABQAAAAAAAAAAAAIABQAAAAAAAAAAAAEABQAAAAAAAAAAAAAABQAEAAAAAAA=")
-tile_set = ExtResource("15_y3mmh")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="Ground" type="TileMapLayer" parent="MapManager/LeftBlock"]
 texture_filter = 1
-tile_set = ExtResource("15_y3mmh")
+tile_map_data = PackedByteArray("AAAFAAAAAgADAAAAAAAFAAEAAgABAAEAAAADAAAAAgACAAMAAAADAAEAAgAAAAEAAAAAAAIAAgACAAAAAAAAAAQAAgADAAMAAAAHAAUAAgACAAEAAAAHAAMAAgAAAAEAAAACAAcAAgADAAAAAAAEAAcAAgADAAMAAAAEAAYAAgACAAIAAAAFAAYAAgACAAIAAAAGAAYAAgADAAIAAAAGAAUAAgAAAAEAAAAGAAMAAgACAAMAAAAGAAIAAgADAAIAAAAFAAIAAgABAAMAAAACAAEAAgABAAEAAAABAAEAAgADAAIAAAABAAIAAgACAAIAAAABAAQAAgACAAEAAAABAAUAAgABAAMAAAABAAYAAgABAAEAAAACAAYAAgADAAAAAAAFAAUAAQAAAAEAAAAFAAMAAQACAAEAAAACAAIAAQACAAIAAAACAAUAAQACAAEAAAAHAAQAAAAAAAEAAAAGAAQAAAACAAEAAAAFAAQAAAABAAIAAAAEAAQAAAADAAEAAAAEAAUAAAABAAMAAAADAAUAAAABAAAAAAADAAYAAAAAAAEAAAADAAcAAAADAAEAAAACAAQAAAABAAEAAAACAAMAAAAAAAIAAAABAAMAAAADAAAAAAAAAAMAAAADAAMAAAADAAMAAAADAAMAAAAEAAMAAAABAAIAAAAEAAIAAAABAAMAAAADAAIAAAADAAMAAAAEAAEAAAAAAAMAAAAEAAAAAAADAAAAAAA=")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/LeftBlock"]
 texture_filter = 1
-tile_set = ExtResource("16_y4xkf")
-script = ExtResource("17_pr0p8")
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAA=")
+tile_set = ExtResource("20_ugk5q")
+script = ExtResource("21_4u6u3")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
 
 [node name="RightBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]
 position = Vector2(799, 214)
-script = ExtResource("14_gsjb5")
+script = ExtResource("18_ovy75")
 neighbor_up = NodePath("../TopBlock")
 neighbor_down = NodePath("../BottomBlock")
 neighbor_left = NodePath("../FrontBlock")
@@ -1272,45 +1149,47 @@ metadata/_custom_type_script = "uid://kq62wxarnwli"
 [node name="Background" type="TileMapLayer" parent="MapManager/RightBlock"]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAAABQABAAAAAAABAAEABQAAAAIAAAABAAIABQAAAAIAAAABAAMABQAAAAIAAAABAAQABQAAAAIAAAACAAAABQABAAAAAAACAAEABQAAAAIAAAACAAIABQAAAAIAAAACAAMABQAAAAIAAAACAAQABQAAAAIAAAADAAAABQABAAAAAAADAAEABQAAAAIAAAADAAIABQAAAAIAAAADAAMABQAAAAIAAAADAAQABQAAAAIAAAAEAAAABQABAAAAAAAEAAEABQAAAAIAAAAEAAIABQAAAAIAAAAEAAMABQAAAAIAAAAEAAQABQAAAAIAAAAFAAAABQABAAAAAAAFAAEABQAAAAIAAAAFAAIABQAAAAIAAAAFAAMABQAAAAIAAAAFAAQABQAAAAIAAAABAAUABQAAAAIAAAACAAUABQAAAAIAAAADAAUABQAAAAIAAAAEAAUABQAAAAIAAAAFAAUABQAAAAIAAAABAAYABQAAAAIAAAABAAcABQADAAAAAAACAAYABQAAAAIAAAACAAcABQADAAAAAAADAAYABQAAAAIAAAADAAcABQADAAAAAAAEAAYABQAAAAIAAAAEAAcABQADAAAAAAAFAAYABQAAAAIAAAAFAAcABQADAAAAAAAGAAAABQABAAAAAAAGAAEABQAAAAIAAAAGAAIABQAAAAIAAAAGAAMABQAAAAIAAAAGAAQABQAAAAIAAAAGAAUABQAAAAIAAAAGAAYABQAAAAIAAAAGAAcABQADAAAAAAAHAAAABQAFAAAAAAAHAAEABQACAAAAAAAHAAIABQACAAAAAAAHAAMABQACAAAAAAAHAAQABQACAAAAAAAHAAUABQACAAAAAAAHAAYABQACAAAAAAAHAAcABQAAAAEAAAAAAAcABQABAAEAAAAAAAYABQAAAAAAAAAAAAUABQAAAAAAAAAAAAQABQAAAAAAAAAAAAMABQAAAAAAAAAAAAIABQAAAAAAAAAAAAEABQAAAAAAAAAAAAAABQAEAAAAAAA=")
-tile_set = ExtResource("15_y3mmh")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="Ground" type="TileMapLayer" parent="MapManager/RightBlock"]
 texture_filter = 1
-tile_set = ExtResource("15_y3mmh")
+tile_map_data = PackedByteArray("AAAAAAIAAgACAAIAAAAAAAQAAgACAAAAAAACAAcAAgACAAMAAAAEAAcAAgADAAEAAAAFAAAAAgABAAMAAAADAAAAAgABAAMAAAAHAAUAAgAAAAMAAAAHAAMAAgACAAAAAAAGAAMAAgADAAIAAAAGAAIAAgACAAEAAAAGAAEAAgACAAMAAAAFAAEAAgACAAMAAAADAAEAAgABAAEAAAACAAEAAgABAAEAAAABAAEAAgABAAEAAAABAAIAAgADAAIAAAABAAQAAgAAAAMAAAABAAUAAgAAAAEAAAABAAYAAgACAAAAAAACAAYAAgACAAEAAAAEAAYAAgADAAIAAAAFAAYAAgAAAAMAAAAGAAYAAgAAAAMAAAAGAAUAAgACAAIAAAADAAQAAQADAAIAAAAEAAQAAQADAAAAAAAEAAMAAQABAAEAAAADAAMAAQABAAMAAAAHAAYAAwABAAEAAAAHAAcAAwAAAAEAAAAGAAcAAwABAAEAAAAFAAcAAwAAAAAAAAAHAAIAAwADAAAAAAAHAAEAAwABAAMAAAAHAAAAAwABAAMAAAAGAAAAAwACAAIAAAACAAAAAwAAAAEAAAABAAAAAwAAAAIAAAAAAAAAAwAAAAAAAAAAAAEAAwABAAIAAAAAAAUAAwABAAEAAAAAAAYAAwACAAEAAAAAAAcAAwABAAIAAAABAAcAAwADAAMAAAA=")
+tile_set = ExtResource("19_wk6bc")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/RightBlock"]
 texture_filter = 1
-tile_set = ExtResource("16_y4xkf")
-script = ExtResource("17_pr0p8")
+tile_map_data = PackedByteArray("AAAFAAUAAAAAAAAAAAA=")
+tile_set = ExtResource("20_ugk5q")
+script = ExtResource("21_4u6u3")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
 
 [node name="MapEdgeDisplay" type="TileMapLayer" parent="MapManager"]
 tile_set = SubResource("TileSet_1pmpf")
-script = ExtResource("23_8cdjg")
+script = ExtResource("23_yvv08")
 
 [node name="LeftArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
 texture_filter = 1
 position = Vector2(103, -25)
-texture = ExtResource("24_qbbld")
+texture = ExtResource("24_bccrp")
 
 [node name="RightArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
 texture_filter = 1
 position = Vector2(55, -25)
-texture = ExtResource("25_gsjb5")
+texture = ExtResource("25_20f45")
 
 [node name="UpArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
 texture_filter = 1
 position = Vector2(15, -25)
-texture = ExtResource("26_y3mmh")
+texture = ExtResource("26_6bay7")
 
 [node name="DownArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
 texture_filter = 1
 position = Vector2(-17, -25)
-texture = ExtResource("27_y4xkf")
+texture = ExtResource("27_to6s4")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("18_1pmpf")
+script = ExtResource("28_7tcdn")
 metadata/_custom_type_script = "uid://3igi3vc7wm3i"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player"]
@@ -1329,7 +1208,7 @@ shape = SubResource("RectangleShape2D_mm7tu")
 
 [node name="Rays" type="Node2D" parent="Player"]
 position = Vector2(8, 8)
-script = ExtResource("20_246hf")
+script = ExtResource("30_y73h4")
 metadata/_custom_type_script = "uid://dxp3b2kd1bkkv"
 
 [node name="Up" type="RayCast2D" parent="Player/Rays"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://dip24s5sn126d"]
+[gd_scene load_steps=106 format=4 uid="uid://dip24s5sn126d"]
 
 [ext_resource type="Script" uid="uid://bq6yhha3dwffh" path="res://scripts/level_manager.gd" id="1_34hum"]
 [ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_vhkxn"]
@@ -24,6 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://cj7p6vyl1h777" path="res://sprites/exit_button_pressed.png" id="14_mswog"]
 [ext_resource type="Texture2D" uid="uid://cvwakegfxvod6" path="res://sprites/exit_button_hovered.png" id="15_eh6x6"]
 [ext_resource type="Script" uid="uid://bc47owkdqsdbp" path="res://scripts/win_dialog.gd" id="16_sagaa"]
+[ext_resource type="Texture2D" uid="uid://dlmbfr05wrrru" path="res://tilesets/sources/inner_edge_tile.png" id="22_mswog"]
+[ext_resource type="Script" uid="uid://lm5f2q6ych6k" path="res://scripts/map_edge_display.gd" id="23_eh6x6"]
+[ext_resource type="Texture2D" uid="uid://cjpe07tw2dul" path="res://sprites/right_arrow.png" id="24_0rc6f"]
+[ext_resource type="Texture2D" uid="uid://j7mrg4exvo45" path="res://sprites/down_arrow.png" id="24_eh6x6"]
+[ext_resource type="Texture2D" uid="uid://boaj3nm3jxtyj" path="res://sprites/left_arrow.png" id="24_p102h"]
+[ext_resource type="Texture2D" uid="uid://iemuavr1ndih" path="res://sprites/up_arrow.png" id="24_sagaa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rdr40"]
 texture = ExtResource("4_0qejo")
@@ -203,6 +209,13 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p102h"]
+texture = ExtResource("22_mswog")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0rc6f"]
+sources/0 = SubResource("TileSetAtlasSource_p102h")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yqn4"]
 atlas = ExtResource("9_erlbe")
@@ -913,6 +926,22 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3dafp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5adam")
 text = "RETURN TO MENU"
 
+[node name="TextureRect" type="TextureRect" parent="MiscCanvasLayer/Control/PauseScreen"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -152.0
+offset_right = 97.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_0qejo")
+
 [node name="PauseButton" type="TextureButton" parent="MiscCanvasLayer/Control"]
 unique_name_in_owner = true
 texture_filter = 1
@@ -1037,7 +1066,7 @@ tile_set = ExtResource("5_myogd")
 
 [node name="Ground" type="TileMapLayer" parent="MapManager/FrontBlock"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAABAAQAAAADAAAAAAAEAAMAAAACAAEAAAABAAEAAAABAAEAAAAEAAQAAAADAAMAAAABAAIAAQACAAEAAAABAAUAAQABAAIAAAADAAEAAQADAAIAAAAFAAQAAQADAAEAAAAFAAUAAQAAAAIAAAAEAAUAAQADAAEAAAADAAUAAQAAAAIAAAAHAAcAAAADAAAAAAAAAAAAAAACAAEAAAAGAAcAAQAAAAMAAAAHAAYAAQAAAAMAAAAGAAYAAQAAAAIAAAAFAAAAAgACAAAAAAACAAcAAgACAAMAAAACAAYAAgABAAMAAAACAAUAAgABAAMAAAACAAQAAgAAAAMAAAACAAMAAgACAAIAAAADAAMAAgACAAAAAAAHAAIAAgACAAAAAAAGAAIAAgADAAAAAAAFAAIAAgABAAEAAAAFAAEAAgACAAEAAAA=")
+tile_map_data = PackedByteArray("AAABAAQAAAADAAAAAAAEAAMAAAACAAEAAAABAAEAAAABAAEAAAAEAAQAAAADAAMAAAABAAIAAQACAAEAAAABAAUAAQABAAIAAAADAAEAAgACAAMAAAAFAAQAAQADAAEAAAAFAAUAAQAAAAIAAAAEAAUAAQADAAEAAAADAAUAAQAAAAIAAAAHAAcAAAADAAAAAAAAAAAAAAACAAEAAAAGAAcAAQAAAAMAAAAHAAYAAQAAAAMAAAAGAAYAAQAAAAIAAAACAAcAAgACAAMAAAACAAYAAgABAAMAAAACAAUAAgABAAMAAAACAAQAAgAAAAMAAAACAAMAAgACAAIAAAADAAMAAgACAAAAAAAHAAIAAgACAAAAAAAGAAIAAgADAAAAAAAFAAIAAgABAAEAAAAFAAEAAgACAAEAAAAHAAMAAgADAAAAAAAHAAQAAgADAAEAAAAEAAEAAgACAAAAAAACAAEAAgACAAAAAAACAAAAAgABAAMAAAA=")
 tile_set = ExtResource("5_myogd")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/FrontBlock"]
@@ -1086,10 +1115,34 @@ tile_set = ExtResource("5_myogd")
 
 [node name="NodesAndWires" type="TileMapLayer" parent="MapManager/BackBlock"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAEAAQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAMAAAAAAAAAAAA=")
 tile_set = ExtResource("6_s4l03")
 script = ExtResource("7_ypncs")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
+
+[node name="MapEdgeDisplay" type="TileMapLayer" parent="MapManager"]
+tile_set = SubResource("TileSet_0rc6f")
+script = ExtResource("23_eh6x6")
+
+[node name="LeftArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
+texture_filter = 1
+position = Vector2(103, -25)
+texture = ExtResource("24_p102h")
+
+[node name="RightArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
+texture_filter = 1
+position = Vector2(55, -25)
+texture = ExtResource("24_0rc6f")
+
+[node name="UpArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
+texture_filter = 1
+position = Vector2(15, -25)
+texture = ExtResource("24_sagaa")
+
+[node name="DownArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
+texture_filter = 1
+position = Vector2(-17, -25)
+texture = ExtResource("24_eh6x6")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
