@@ -81,6 +81,7 @@ var _total_nodes: int
 var _tile_chains: Array[Array] = []
 var _all_tiles: Array[Vector2i] = []
 var _just_entered: bool
+var _move_is_undo: bool = false
 
 # Built-in Method Overrides
 func _ready() -> void:
@@ -114,6 +115,7 @@ func is_open_tile(tile: Vector2i) -> bool:
 
 
 func remove_tile(tile: Vector2i) -> void:
+	_move_is_undo = true
 	if not Input.is_action_pressed("undo"):
 		%Player.dont_count_last_move(2)
 	_all_tiles.pop_back()
@@ -191,13 +193,21 @@ func update_nodes_and_wires(player_tile: Vector2i, old_tile: Vector2i) -> void:
 		):
 			await %Player.just_moved
 			remove_tile(player_tile)
+		elif (
+			get_cell_tile_data(player_tile)
+			and player_tile != starting_node
+			and get_cell_atlas_coords(player_tile) in _node_atlas_coords_list
+		):
+			await %Player.just_moved
+			set_cell(player_tile, 0, node_atlas_coords["inactive"])
 		return
 	if _tile_chains[-1].size() == 0 and not parent_block.BlockRect.has_point(player_tile):
 		return
 	var move_dir := relative_dir(old_tile, player_tile)
 	add_wire(old_tile, move_dir)
-	if starting_node != null and player_tile == starting_node:
+	if starting_node != null and player_tile == starting_node and not _move_is_undo:
 		set_player_restricted_move_directions(old_tile)
+	_move_is_undo = false
 	return
 
 
