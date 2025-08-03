@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Public Methods
 func update_text() -> void:
-	text = str(_active_nodes)+"/"+str(map_manager.TotalNodes + 1)
+	text = str(_active_nodes)+"/"+str(map_manager.TotalNodes)
 
 
 # Signal Response Methods
