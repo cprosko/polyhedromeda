@@ -116,8 +116,8 @@ func is_open_tile(tile: Vector2i) -> bool:
 
 func remove_tile(tile: Vector2i) -> void:
 	_move_is_undo = true
-	if not Input.is_action_pressed("undo"):
-		%Player.dont_count_last_move(2)
+	#if not Input.is_action_pressed("undo"):
+		#%Player.dont_count_last_move(1)
 	_all_tiles.pop_back()
 	_tile_chains[-1].pop_back()
 	set_cell(tile, -1)
