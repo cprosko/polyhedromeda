@@ -26,6 +26,9 @@ var TotalNodes: int:
 # Public variables
 var undo_moves_since_start: Array[Vector2i] = []
 
+# Cached References
+@onready var map_edge_display: MapEdgeDisplay = $MapEdgeDisplay
+
 # Private Variables
 var _block_ids: Array[int]
 
@@ -149,9 +152,13 @@ func load_blocks_from_center(
 			block.position = unused_block_position
 	if unfold_map:
 		return
+	map_edge_display.reset_edges()
 	for dir in Enums.Dir.values():
 		active_block.NeighborBlocks[dir].visible = active_block.edge_types[dir] == Enums.Edge.NONE
-		# TODO: draw edge differently  for outer vs inner blocks
+		if active_block.edge_types[dir] != Enums.Edge.NONE:
+			map_edge_display.add_edge(
+				dir, active_block.edge_types[dir] == Enums.Edge.INNER
+			)
 	return
 
 

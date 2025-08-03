@@ -203,6 +203,7 @@ func update_nodes_and_wires(player_tile: Vector2i, old_tile: Vector2i) -> void:
 func reconnected_starting_node(player_tile: Vector2i) -> bool:
 	return (
 		starting_node != null
+		and starting_node != Vector2i.ZERO
 		and player_tile == starting_node
 		and _tile_chains[0].size() > 1
 	)
