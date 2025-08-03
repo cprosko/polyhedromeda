@@ -918,6 +918,7 @@ unique_name_in_owner = true
 position = Vector2(1, 1)
 script = ExtResource("17_wtkl1")
 starting_player_position = Vector2i(2, 2)
+unfold_map = true
 metadata/_custom_type_script = "uid://cvhqfqafns1lm"
 
 [node name="BackBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]

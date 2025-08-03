@@ -119,29 +119,41 @@ func load_blocks_from_center(
 	# Position loaded blocks
 	active_block.position = Vector2.ZERO
 	if active_block.neighbor_up != null:
-		active_block.neighbor_up.position = Vector2(
-			0,
-			map_to_local(-active_block.neighbor_up.Size).y
-			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.y
-		)
+		if active_block.edge_types[Enums.Dir.UP] == Enums.Edge.NONE:
+			active_block.neighbor_up.position = Vector2(
+				0,
+				map_to_local(-active_block.neighbor_up.Size).y
+				- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.y
+			)
+		else:
+			active_block.neighbor_up.position = unused_block_position
 	if active_block.neighbor_down != null:
-		active_block.neighbor_down.position = Vector2(
-			0,
-			map_to_local(active_block.Size).y
-			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.y
-		)
+		if active_block.edge_types[Enums.Dir.DOWN] == Enums.Edge.NONE:
+			active_block.neighbor_down.position = Vector2(
+				0,
+				map_to_local(active_block.Size).y
+				- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.y
+			)
+		else:
+			active_block.neighbor_down.position = unused_block_position
 	if active_block.neighbor_left != null:
-		active_block.neighbor_left.position = Vector2(
-			map_to_local(-active_block.neighbor_left.Size).x
-			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.x,
-			0
-		)
+		if active_block.edge_types[Enums.Dir.LEFT] == Enums.Edge.NONE:
+			active_block.neighbor_left.position = Vector2(
+				map_to_local(-active_block.neighbor_left.Size).x
+				- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.x,
+				0
+			)
+		else:
+			active_block.neighbor_left.position = unused_block_position
 	if active_block.neighbor_right != null:
-		active_block.neighbor_right.position = Vector2(
-			map_to_local(active_block.End).x
-			- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.x,
-			0
-		)
+		if active_block.edge_types[Enums.Dir.RIGHT] == Enums.Edge.NONE:
+			active_block.neighbor_right.position = Vector2(
+				map_to_local(active_block.End).x
+				- 0.5 * GlobalsInst.TILE_SIZE_PIXELS.x,
+				0
+			)
+		else:
+			active_block.neighbor_right.position = unused_block_position
 
 	# Only make active blocks visible
 	for block in map_blocks:
