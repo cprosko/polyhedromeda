@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=4 uid="uid://dip24s5sn126d"]
+[gd_scene load_steps=107 format=4 uid="uid://dip24s5sn126d"]
 
 [ext_resource type="Script" uid="uid://bq6yhha3dwffh" path="res://scripts/level_manager.gd" id="1_34hum"]
 [ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_vhkxn"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cj7p6vyl1h777" path="res://sprites/exit_button_pressed.png" id="14_mswog"]
 [ext_resource type="Texture2D" uid="uid://cvwakegfxvod6" path="res://sprites/exit_button_hovered.png" id="15_eh6x6"]
 [ext_resource type="Script" uid="uid://bc47owkdqsdbp" path="res://scripts/win_dialog.gd" id="16_sagaa"]
+[ext_resource type="Script" uid="uid://c5d8kwm3hv3di" path="res://scripts/node_score_label.gd" id="17_qf67e"]
 [ext_resource type="Texture2D" uid="uid://dlmbfr05wrrru" path="res://tilesets/sources/inner_edge_tile.png" id="22_mswog"]
 [ext_resource type="Script" uid="uid://lm5f2q6ych6k" path="res://scripts/map_edge_display.gd" id="23_eh6x6"]
 [ext_resource type="Texture2D" uid="uid://cjpe07tw2dul" path="res://sprites/right_arrow.png" id="24_0rc6f"]
@@ -1024,6 +1025,26 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_a67nr")
 autoplay = "default"
 frame_progress = 0.104828
+
+[node name="NodeScoreLabel" type="RichTextLabel" parent="MiscCanvasLayer/Control"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("5_erlbe")
+theme_override_font_sizes/normal_font_size = 26
+text = "0/4"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("17_qf67e")
 
 [node name="MapManager" type="Node2D" parent="."]
 unique_name_in_owner = true

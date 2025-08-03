@@ -84,6 +84,7 @@ var _just_entered: bool
 
 # Built-in Method Overrides
 func _ready() -> void:
+	set_node_active.connect(%NodeScoreLabel._on_set_node_active)
 	_total_nodes = 0
 	for node_atlas_coord in _node_atlas_coords_list:
 		_total_nodes += len(get_used_cells_by_id(-1, node_atlas_coord))

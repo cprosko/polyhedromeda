@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://bagiq8uvcc4ro"]
+[gd_scene load_steps=104 format=4 uid="uid://bagiq8uvcc4ro"]
 
 [ext_resource type="Script" uid="uid://bq6yhha3dwffh" path="res://scripts/level_manager.gd" id="1_t4umt"]
 [ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_4yk0h"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cj7p6vyl1h777" path="res://sprites/exit_button_pressed.png" id="14_kc3v0"]
 [ext_resource type="Texture2D" uid="uid://cvwakegfxvod6" path="res://sprites/exit_button_hovered.png" id="15_prmli"]
 [ext_resource type="Script" uid="uid://bc47owkdqsdbp" path="res://scripts/win_dialog.gd" id="16_dwx2n"]
+[ext_resource type="Script" uid="uid://c5d8kwm3hv3di" path="res://scripts/node_score_label.gd" id="16_t4umt"]
 [ext_resource type="Script" uid="uid://cvhqfqafns1lm" path="res://scripts/map_manager.gd" id="17_wtkl1"]
 [ext_resource type="Script" uid="uid://kq62wxarnwli" path="res://scripts/map_block.gd" id="18_ovy75"]
 [ext_resource type="TileSet" uid="uid://ot12yrgktr4i" path="res://tilesets/two_color_space_tileset.tres" id="19_wk6bc"]
@@ -891,6 +892,26 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_a67nr")
 autoplay = "default"
 frame_progress = 0.104828
+
+[node name="NodeScoreLabel" type="RichTextLabel" parent="MiscCanvasLayer/Control"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("5_wvtie")
+theme_override_font_sizes/normal_font_size = 26
+text = "0/4"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("16_t4umt")
 
 [node name="MapManager" type="Node2D" parent="."]
 unique_name_in_owner = true
