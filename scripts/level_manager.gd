@@ -19,7 +19,6 @@ func _ready() -> void:
 	GlobalsInst.current_scene_name = current_scene_name
 	GlobalsInst.next_scene_name = next_scene_name
 	total_nodes = map_manager.TotalNodes
-	print("Total nodes: ", total_nodes)
 	for map_block in map_manager.map_blocks:
 		map_block.nodes_and_wires.set_node_active.connect(_on_set_node_active)
 		map_block.nodes_and_wires.loop_completed.connect(_on_loop_completed)
@@ -41,11 +40,9 @@ func load_next_scene() -> void:
 # Signal Response Methods
 func _on_set_node_active(active: bool) -> void:
 	activated_nodes += +1 if active else -1
-	print("ACTIVATED NODES: ", activated_nodes)
 
 
 func _on_loop_completed() -> void:
-	print("LOOP COMPLETED")
 	if activated_nodes >= total_nodes - 1: # -1 because starting node isn't counted
 		win_level()
 

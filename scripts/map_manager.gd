@@ -18,10 +18,11 @@ var BlockIDs: Array[int]:
 		return _block_ids
 var TotalNodes: int:
 	get:
-		var total = 0
-		for map_block in map_blocks:
-			total += map_block.nodes_and_wires.TotalNodes
-		return total
+		if _total_nodes == null or _total_nodes == 0:
+			if not is_node_ready():
+				await ready
+			_calculate_total_nodes()
+		return _total_nodes
 
 # Public variables
 var undo_moves_since_start: Array[Vector2i] = []
@@ -31,6 +32,7 @@ var undo_moves_since_start: Array[Vector2i] = []
 
 # Private Variables
 var _block_ids: Array[int]
+var _total_nodes: int
 
 # Built-in Method Overrides
 func _ready() -> void:
@@ -262,6 +264,12 @@ func _assign_block_ids() -> void:
 
 func _update_nodes_and_wires(player_tile: Vector2i, old_tile: Vector2i) -> void:
 	active_block.nodes_and_wires.update_nodes_and_wires(player_tile, old_tile)
+
+
+func _calculate_total_nodes() -> void:
+	_total_nodes = 0
+	for map_block in map_blocks:
+		_total_nodes += map_block.nodes_and_wires.TotalNodes
 
 
 # Signal Response Methods

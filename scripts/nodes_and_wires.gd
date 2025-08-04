@@ -69,6 +69,8 @@ var IsActive: bool:
 		return parent_block.IsActive
 var TotalNodes: int:
 	get:
+		if _total_nodes == null or _total_nodes == 0:
+			_calculate_total_nodes()
 		return _total_nodes
 var entry_dir: Enums.Dir
 var starting_node: Vector2i
@@ -86,15 +88,14 @@ var _move_is_undo: bool = false
 # Built-in Method Overrides
 func _ready() -> void:
 	set_node_active.connect(%NodeScoreLabel._on_set_node_active)
-	_total_nodes = 0
-	for node_atlas_coord in _node_atlas_coords_list:
-		_total_nodes += len(get_used_cells_by_id(-1, node_atlas_coord))
-	print("block total nodes: ", _total_nodes)
+	_calculate_total_nodes()
 
 
 # Public Methods
 func place_starting_node() -> void:
 	set_cell(%Player.TilePosition, 0, node_atlas_coords["starting"])
+	if _total_nodes == null:
+		_calculate_total_nodes()
 	_tile_chains.append([%Player.TilePosition])
 	_all_tiles.append(_tile_chains[-1][-1])
 	starting_node = %Player.TilePosition
@@ -181,8 +182,8 @@ func update_nodes_and_wires(player_tile: Vector2i, old_tile: Vector2i) -> void:
 		and (old_tile != starting_node or _tile_chains[-1].size() > 1)
 		and get_cell_atlas_coords(old_tile) in _node_atlas_coords_list
 	):
-		set_node_active.emit(false)
 		if old_tile != starting_node:
+			set_node_active.emit(false)
 			set_cell(old_tile, 0, node_atlas_coords["inactive"])
 		_tile_chains[-1].pop_back()
 		_all_tiles.pop_back()
@@ -205,7 +206,12 @@ func update_nodes_and_wires(player_tile: Vector2i, old_tile: Vector2i) -> void:
 		return
 	var move_dir := relative_dir(old_tile, player_tile)
 	add_wire(old_tile, move_dir)
-	if starting_node != null and player_tile == starting_node and not _move_is_undo:
+	if (
+		starting_node != null
+		and starting_node != Vector2i.ZERO
+		and player_tile == starting_node
+		and not _move_is_undo
+	):
 		set_player_restricted_move_directions(old_tile)
 	_move_is_undo = false
 	return
@@ -234,3 +240,9 @@ func set_player_restricted_move_directions(old_tile: Vector2i) -> void:
 		if not get_cell_tile_data(starting_node + dir):
 			%Player.move_dirs.append(dir)
 	print("Restricted move dirs: ", %Player.move_dirs)
+
+
+func _calculate_total_nodes() -> void:
+	_total_nodes = 0
+	for node_atlas_coord in _node_atlas_coords_list:
+		_total_nodes += len(get_used_cells_by_id(-1, node_atlas_coord))
