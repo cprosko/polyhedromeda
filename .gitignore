@@ -5,6 +5,10 @@ tilesets/sources/fantasy_tiles/
 *.aseprite
 *.tmp
 
+# Misc project-specific
+*screenshot*
+capsule_photo*
+
 # Godot 4+ specific ignores
 .godot/
 .nomedia
