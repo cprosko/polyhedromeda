@@ -51,7 +51,7 @@ func _on_loop_completed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
-	GlobalsInst.next_scene_name = "levels/"+current_scene_name
+	GlobalsInst.next_scene_name = current_scene_name
 	load_next_scene()
 
 
