@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://bagiq8uvcc4ro"]
+[gd_scene load_steps=97 format=4 uid="uid://bagiq8uvcc4ro"]
 
 [ext_resource type="Script" uid="uid://bq6yhha3dwffh" path="res://scripts/level_manager.gd" id="1_t4umt"]
 [ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_4yk0h"]
@@ -21,12 +21,7 @@
 [ext_resource type="TileSet" uid="uid://ot12yrgktr4i" path="res://tilesets/two_color_space_tileset.tres" id="19_wk6bc"]
 [ext_resource type="TileSet" uid="uid://bjm8dm4q83nd8" path="res://tilesets/nodes_and_wires.tres" id="20_ugk5q"]
 [ext_resource type="Script" uid="uid://cyg4kuvi2nlhe" path="res://scripts/nodes_and_wires.gd" id="21_4u6u3"]
-[ext_resource type="Texture2D" uid="uid://dlmbfr05wrrru" path="res://tilesets/sources/inner_edge_tile.png" id="22_i3rdk"]
-[ext_resource type="Script" uid="uid://lm5f2q6ych6k" path="res://scripts/map_edge_display.gd" id="23_yvv08"]
-[ext_resource type="Texture2D" uid="uid://boaj3nm3jxtyj" path="res://sprites/left_arrow.png" id="24_bccrp"]
-[ext_resource type="Texture2D" uid="uid://cjpe07tw2dul" path="res://sprites/right_arrow.png" id="25_20f45"]
-[ext_resource type="Texture2D" uid="uid://iemuavr1ndih" path="res://sprites/up_arrow.png" id="26_6bay7"]
-[ext_resource type="Texture2D" uid="uid://j7mrg4exvo45" path="res://sprites/down_arrow.png" id="27_to6s4"]
+[ext_resource type="PackedScene" uid="uid://cgddg61hgp4ss" path="res://scenes/subscenes/map_edge_display.tscn" id="22_7o3do"]
 [ext_resource type="Script" uid="uid://3igi3vc7wm3i" path="res://scripts/player/player.gd" id="28_7tcdn"]
 [ext_resource type="Texture2D" uid="uid://3v0vd5dksjnc" path="res://tilesets/sources/robot_motion.png" id="29_4gp5p"]
 [ext_resource type="Script" uid="uid://dxp3b2kd1bkkv" path="res://scripts/player/player_rays.gd" id="30_y73h4"]
@@ -164,13 +159,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pr0p8"]
-texture = ExtResource("22_i3rdk")
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_1pmpf"]
-sources/0 = SubResource("TileSetAtlasSource_pr0p8")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yqn4"]
 atlas = ExtResource("8_row31")
@@ -604,6 +592,8 @@ size = Vector2(8, 8)
 
 [node name="LevelManager" type="Node2D"]
 script = ExtResource("1_t4umt")
+current_scene_name = "levels/level_1"
+next_scene_name = "win_screen"
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -918,7 +908,6 @@ unique_name_in_owner = true
 position = Vector2(1, 1)
 script = ExtResource("17_wtkl1")
 starting_player_position = Vector2i(2, 2)
-unfold_map = true
 metadata/_custom_type_script = "uid://cvhqfqafns1lm"
 
 [node name="BackBlock" type="Node2D" parent="MapManager" node_paths=PackedStringArray("neighbor_up", "neighbor_down", "neighbor_left", "neighbor_right")]
@@ -1185,29 +1174,7 @@ tile_set = ExtResource("20_ugk5q")
 script = ExtResource("21_4u6u3")
 metadata/_custom_type_script = "uid://cyg4kuvi2nlhe"
 
-[node name="MapEdgeDisplay" type="TileMapLayer" parent="MapManager"]
-tile_set = SubResource("TileSet_1pmpf")
-script = ExtResource("23_yvv08")
-
-[node name="LeftArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
-texture_filter = 1
-position = Vector2(103, -25)
-texture = ExtResource("24_bccrp")
-
-[node name="RightArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
-texture_filter = 1
-position = Vector2(55, -25)
-texture = ExtResource("25_20f45")
-
-[node name="UpArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
-texture_filter = 1
-position = Vector2(15, -25)
-texture = ExtResource("26_6bay7")
-
-[node name="DownArrow" type="Sprite2D" parent="MapManager/MapEdgeDisplay"]
-texture_filter = 1
-position = Vector2(-17, -25)
-texture = ExtResource("27_to6s4")
+[node name="MapEdgeDisplay" parent="MapManager" instance=ExtResource("22_7o3do")]
 
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true

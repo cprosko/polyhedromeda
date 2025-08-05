@@ -2,21 +2,27 @@ class_name MapEdgeDisplay
 extends TileMapLayer
 
 # Public Parameters
-@export var arrow_move_dist := 15.0
-@export var arrow_edge_offset := 20.0
+@export var arrow_edge_offset := 7.5
+@export var arrow_oscillation_dist := 10.0
 @export var tile_atlas_coord := Vector2i(0, 0)
-@export var oscillation_duration := 0.3
 
 # Public Variables
 var movement_tweens: Dictionary[Enums.Dir, Tween] = {}
 
 # Cached references
-@onready var arrows: Dictionary[Enums.Dir, Sprite2D] = {
-	Enums.Dir.LEFT:  $LeftArrow,
-	Enums.Dir.RIGHT: $RightArrow,
-	Enums.Dir.UP:    $UpArrow,
-	Enums.Dir.DOWN:  $DownArrow,
+@onready var arrow_positioners: Dictionary[Enums.Dir, Node2D] = {
+	Enums.Dir.LEFT:  $LeftArrowPositioner,
+	Enums.Dir.RIGHT: $RightArrowPositioner,
+	Enums.Dir.UP:    $UpArrowPositioner,
+	Enums.Dir.DOWN:  $DownArrowPositioner,
 }
+@onready var arrows: Dictionary[Enums.Dir, Sprite2D] = {
+	Enums.Dir.LEFT:  $LeftArrowPositioner/LeftArrow,
+	Enums.Dir.RIGHT: $RightArrowPositioner/RightArrow,
+	Enums.Dir.UP:    $UpArrowPositioner/UpArrow,
+	Enums.Dir.DOWN:  $DownArrowPositioner/DownArrow,
+}
+@onready var arrow_animator: ArrowAnimator = $ArrowAnimator
 var map_manager: MapManager
 
 # Private variables
@@ -26,17 +32,13 @@ var _raw_positions: Dictionary[Enums.Dir, Vector2]
 # Built-In Method Overrides
 func _ready() -> void:
 	map_manager = get_parent()
-	movement_tweens[Enums.Dir.LEFT] = create_tween()
-	movement_tweens[Enums.Dir.RIGHT] = create_tween()
-	movement_tweens[Enums.Dir.UP] = create_tween()
-	movement_tweens[Enums.Dir.DOWN] = create_tween()
+	arrow_animator.oscillation_dist = arrow_oscillation_dist
 
 
 # Public Methods
 func reset_edges() -> void:
 	clear()
 	for dir in Enums.Dir.values():
-		movement_tweens[dir].kill()
 		arrows[dir].visible = false
 
 
@@ -66,9 +68,8 @@ func add_edge(dir: Enums.Dir, inner: bool) -> void:
 				x_midpoint, active_block_size.y + true_offset
 			)
 	arrows[dir].visible = true
-	arrows[dir].position = arrow_pos
+	arrow_positioners[dir].position = arrow_pos
 	_raw_positions[dir] = arrow_pos
-	animate_arrow(dir)
 	if not inner:
 		return
 	var tiles_to_add: Array[Vector2i] = []
@@ -87,25 +88,3 @@ func add_edge(dir: Enums.Dir, inner: bool) -> void:
 				tiles_to_add.append(Vector2i(i, active_block_tile_size.y))
 	for tile in tiles_to_add:
 		set_cell(tile, 0, tile_atlas_coord)
-
-
-func animate_arrow(dir: Enums.Dir) -> void:
-	pass # TODO
-	#if movement_tweens[dir]:
-		#movement_tweens[dir].kill()
-		#arrows[dir].position = _raw_positions[dir]
-	#movement_tweens[dir] = create_tween().set_loops()
-	#var oscillation_target: Vector2 = _raw_positions[dir]
-	#match dir:
-		#Vector2i.LEFT:
-			#oscillation_target += Vector2(-arrow_move_dist, 0)
-		#Vector2i.RIGHT:
-			#oscillation_target += Vector2(+arrow_move_dist, 0)
-		#Vector2i.UP:
-			#oscillation_target += Vector2(0, -arrow_move_dist)
-		#Vector2i.DOWN:
-			#oscillation_target += Vector2(0, +arrow_move_dist)
-	#movement_tweens[dir].tween_property(
-		#arrows[dir], "position", oscillation_target, oscillation_duration,
-	#)
-	#movement_tweens[dir].interpolate_value()
