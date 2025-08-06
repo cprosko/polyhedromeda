@@ -1,49 +1,49 @@
 [gd_scene load_steps=21 format=3 uid="uid://dk532fxwmx3u1"]
 
-[ext_resource type="Script" uid="uid://cngr7g68ga2a2" path="res://scripts/win_screen.gd" id="1_6s1kg"]
-[ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_bqn3h"]
-[ext_resource type="Texture2D" uid="uid://fphgmeutoy78" path="res://sprites/cube_panel.png" id="3_qnnn4"]
-[ext_resource type="FontFile" uid="uid://46uhdyfx21cf" path="res://fonts/PixeloidMono.ttf" id="4_doie2"]
-[ext_resource type="Texture2D" uid="uid://dlaxtp73dj4ni" path="res://tilesets/sources/robot_idle.png" id="5_r6ob7"]
-[ext_resource type="Texture2D" uid="uid://drrardrri63tm" path="res://sprites/icon.svg" id="6_o8vhx"]
+[ext_resource type="Script" uid="uid://cngr7g68ga2a2" path="res://scripts/win_screen.gd" id="1_m1jpe"]
+[ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_hk0co"]
+[ext_resource type="Texture2D" uid="uid://fphgmeutoy78" path="res://sprites/cube_panel.png" id="3_tybfv"]
+[ext_resource type="FontFile" uid="uid://46uhdyfx21cf" path="res://fonts/PixeloidMono.ttf" id="4_vf6r5"]
+[ext_resource type="Texture2D" uid="uid://dlaxtp73dj4ni" path="res://tilesets/sources/robot_idle.png" id="5_m54eq"]
+[ext_resource type="Texture2D" uid="uid://drrardrri63tm" path="res://sprites/icon.svg" id="6_adb4l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm208"]
-texture = ExtResource("3_qnnn4")
+texture = ExtResource("3_tybfv")
 texture_margin_left = 13.0
 texture_margin_top = 13.0
 texture_margin_right = 13.0
 texture_margin_bottom = 13.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm208"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pab1"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o30b1"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ka6nf"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ws7p0"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ecdxc"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qls88"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcj7n"]
-atlas = ExtResource("5_r6ob7")
+atlas = ExtResource("5_m54eq")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bdg0b"]
@@ -93,7 +93,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6s1kg")
+script = ExtResource("1_m1jpe")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -102,7 +102,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bqn3h")
+texture = ExtResource("2_hk0co")
 stretch_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -123,7 +123,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_hm208")
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_doie2")
+theme_override_fonts/normal_font = ExtResource("4_vf6r5")
 theme_override_font_sizes/normal_font_size = 27
 text = "You Won!
 thx4playing :)"
@@ -148,7 +148,7 @@ offset_top = -72.0
 offset_right = 496.0
 offset_bottom = -8.0
 grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("4_doie2")
+theme_override_fonts/normal_font = ExtResource("4_vf6r5")
 text = "A game by Belssed Studios
 Christian Prosko (code)
 & Hélène Spring (art)"
@@ -166,7 +166,7 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("6_o8vhx")
+texture = ExtResource("6_adb4l")
 expand_mode = 1
 
 [node name="PlayAgainButton" type="Button" parent="."]
@@ -186,12 +186,32 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0.707918, 0.767015, 1)
 theme_override_colors/font_hover_color = Color(0.101961, 0.92549, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.400698, 0.400698, 0.400698, 1)
-theme_override_fonts/font = ExtResource("4_doie2")
+theme_override_fonts/font = ExtResource("4_vf6r5")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hm208")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5pab1")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ka6nf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o30b1")
 text = "Play Again"
+
+[node name="UhOhMessage" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -32.0
+offset_right = 179.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_vf6r5")
+theme_override_font_sizes/normal_font_size = 27
+text = "ran out of time to make levels..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="PlayAgainButton" to="." method="_on_play_again_button_pressed"]
