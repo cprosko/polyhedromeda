@@ -1,0 +1,1 @@
+Originally a submission to the GMTK Game Jam 2025, which had the theme 'Loops'. To see the game as it was at the time of submission, see the tag 'gmtk_2025_submission'. At the time, it had two unfortunate bugs (fixed in the subsequent two commits), and only two levels.
