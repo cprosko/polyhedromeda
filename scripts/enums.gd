@@ -2,6 +2,8 @@ class_name Enums
 extends Object
 
 enum Dir {LEFT, RIGHT, UP, DOWN}
+enum Side {LEFT, RIGHT, TOP, BOTTOM}
+
 const vec_dir_map: Dictionary[Vector2i, Dir] = {
 	Vector2i.LEFT:  Dir.LEFT,
 	Vector2i.RIGHT: Dir.RIGHT,
