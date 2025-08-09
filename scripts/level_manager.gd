@@ -33,7 +33,7 @@ func load_next_scene() -> void:
 	if %Player.is_moving:
 		await %Player.just_moved
 	get_tree().change_scene_to_file.bind(
-		"res://scenes/scene_transition_screen.tscn"
+		"res://scenes/menus/scene_transition_screen.tscn"
 	).call_deferred()
 
 

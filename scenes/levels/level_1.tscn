@@ -593,7 +593,7 @@ size = Vector2(8, 8)
 [node name="LevelManager" type="Node2D"]
 script = ExtResource("1_t4umt")
 current_scene_name = "levels/level_1"
-next_scene_name = "win_screen"
+next_scene_name = "menus/win_screen"
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
