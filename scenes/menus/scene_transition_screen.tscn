@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8dxjykedxoow"]
 
-[ext_resource type="Script" uid="uid://d1o8cyaqq8a4b" path="res://scripts/scene_transition_screen.gd" id="1_ffnwb"]
+[ext_resource type="Script" uid="uid://d1o8cyaqq8a4b" path="res://scripts/menus/scene_transition_screen.gd" id="1_ffnwb"]
 [ext_resource type="Texture2D" uid="uid://dcj7uoevm0g74" path="res://sprites/starfield.png" id="2_viwee"]
 [ext_resource type="FontFile" uid="uid://46uhdyfx21cf" path="res://fonts/PixeloidMono.ttf" id="3_t3qey"]
 

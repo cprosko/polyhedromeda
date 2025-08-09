@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://cgddg61hgp4ss"]
 
 [ext_resource type="Texture2D" uid="uid://dlmbfr05wrrru" path="res://tilesets/sources/inner_edge_tile.png" id="1_0wnlc"]
-[ext_resource type="Script" uid="uid://lm5f2q6ych6k" path="res://scripts/map_edge_display.gd" id="2_xkbqw"]
-[ext_resource type="Script" uid="uid://c2m2m4ew56xes" path="res://scripts/arrow_animator.gd" id="3_2ol7p"]
+[ext_resource type="Script" uid="uid://lm5f2q6ych6k" path="res://scripts/world/map_edge_display.gd" id="2_xkbqw"]
+[ext_resource type="Script" uid="uid://c2m2m4ew56xes" path="res://scripts/gui/arrow_animator.gd" id="3_2ol7p"]
 [ext_resource type="Texture2D" uid="uid://boaj3nm3jxtyj" path="res://sprites/left_arrow.png" id="4_cr4eq"]
 [ext_resource type="Texture2D" uid="uid://cjpe07tw2dul" path="res://sprites/right_arrow.png" id="5_86ceo"]
 [ext_resource type="Texture2D" uid="uid://iemuavr1ndih" path="res://sprites/up_arrow.png" id="6_06fl1"]

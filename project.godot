@@ -17,7 +17,7 @@ config/icon="res://sprites/icon.svg"
 
 [autoload]
 
-GlobalsInst="*res://scripts/globals.gd"
+GlobalsInst="*res://scripts/misc/globals.gd"
 
 [display]
 
