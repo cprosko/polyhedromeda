@@ -19,8 +19,6 @@ var BlockIDs: Array[int]:
 var TotalNodes: int:
 	get:
 		if _total_nodes == null or _total_nodes == 0:
-			if not is_node_ready():
-				await ready
 			_calculate_total_nodes()
 		return _total_nodes
 
@@ -32,7 +30,7 @@ var undo_moves_since_start: Array[Vector2i] = []
 
 # Private Variables
 var _block_ids: Array[int]
-var _total_nodes: int
+var _total_nodes: int = 0
 
 # Built-in Method Overrides
 func _ready() -> void:

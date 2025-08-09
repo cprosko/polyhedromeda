@@ -10,7 +10,8 @@ var _active_nodes: int = 1
 
 # Built-In Method Overrides
 func _ready() -> void:
-	await get_tree().root.ready
+	if not map_manager.is_node_ready():
+		await map_manager.ready
 	update_text()
 
 

@@ -94,8 +94,7 @@ func _ready() -> void:
 # Public Methods
 func place_starting_node() -> void:
 	set_cell(%Player.TilePosition, 0, node_atlas_coords["starting"])
-	if _total_nodes == null:
-		_calculate_total_nodes()
+	_calculate_total_nodes()
 	_tile_chains.append([%Player.TilePosition])
 	_all_tiles.append(_tile_chains[-1][-1])
 	starting_node = %Player.TilePosition
