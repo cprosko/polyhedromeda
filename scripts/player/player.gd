@@ -39,7 +39,16 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if (_movement_tween and _movement_tween.is_running()) or not can_move or _is_shaking:
+	if (
+		is_moving
+		or not can_move
+		or _is_shaking
+		or GlobalsInst.is_paused
+		or (
+			_movement_tween
+			and _movement_tween.is_running()
+		)
+	):
 		return
 	var move_dir: Vector2i
 	if Input.is_action_pressed("undo") and map_manager.undo_moves_since_start.size() > 0:

@@ -22,7 +22,7 @@ func _ready() -> void:
 		return
 	for dialog_box in dialog_boxes:
 		dialog_box.visible = false
-	%Player.can_move = false
+	GlobalsInst.is_paused = true
 	await get_tree().create_timer(delay_before_display_secs).timeout
 	active = true
 	pause_screen.set_active(false)
@@ -44,7 +44,7 @@ func display_dialogs() -> void:
 func progress_dialogs() -> void:
 	dialog_boxes[current_dialog_ind].visible = false
 	if current_dialog_ind == dialog_boxes.size() - 1:
-		%Player.can_move = true
+		GlobalsInst.is_paused = false
 		active = false
 		pause_screen.set_active(true)
 		return

@@ -27,10 +27,8 @@ func set_active(active: bool) -> void:
 
 
 func flip_pause_state() -> void:
-	if not visible:
-		_player_could_move_pre_pause = %Player.can_move
 	visible = not visible
-	%Player.can_move = _player_could_move_pre_pause if not visible else false
+	GlobalsInst.is_paused = visible
 
 
 # Signal Response Methods
@@ -39,5 +37,4 @@ func _on_pause_button_pressed() -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	%Player.can_move = _player_could_move_pre_pause
-	visible = false
+	flip_pause_state()

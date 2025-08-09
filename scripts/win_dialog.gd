@@ -22,4 +22,4 @@ func _physics_process(_delta: float) -> void:
 func activate_win_state() -> void:
 	visible = true
 	active = true
-	%Player.can_move = false
+	GlobalsInst.is_paused = true
