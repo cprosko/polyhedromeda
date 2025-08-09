@@ -227,7 +227,6 @@ func reconnected_starting_node(player_tile: Vector2i) -> bool:
 
 
 func set_player_restricted_move_directions(old_tile: Vector2i) -> void:
-	print(old_tile - starting_node)
 	%Player.move_dirs.clear()
 	%Player.move_dirs.append(old_tile - starting_node)
 	var dirs: Array[Vector2i] = [
@@ -239,7 +238,6 @@ func set_player_restricted_move_directions(old_tile: Vector2i) -> void:
 	for dir in dirs:
 		if not get_cell_tile_data(starting_node + dir):
 			%Player.move_dirs.append(dir)
-	print("Restricted move dirs: ", %Player.move_dirs)
 
 
 func _calculate_total_nodes() -> void:

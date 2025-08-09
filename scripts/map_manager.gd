@@ -53,13 +53,11 @@ func reset_map() -> void:
 
 func record_move(dir: Vector2i) -> void:
 	if active_block.BlockRect.has_point(%Player.TilePosition + dir):
-		print(-dir)
 		undo_moves_since_start.append(-dir)
 		return
 	var exit_dir: Vector2i = Enums.dir_vec_map[
 		active_block.approach_dirs[Enums.vec_dir_map[dir]]
 	]
-	print("exit dir: ", exit_dir)
 	undo_moves_since_start.append(exit_dir)
 	return
 
@@ -200,7 +198,6 @@ func player_tile_in_next_block(dir: Enums.Dir) -> Vector2i:
 		or (dir == Enums.Dir.DOWN and approach_dir == Enums.Dir.LEFT)
 		or (dir == approach_dir)
 	)
-	print("Count from end: ", count_from_end)
 	if count_from_end:
 		if approach_dir in vert_dirs:
 			pres_coord = to_block.BlockSizeTiles.y - pres_coord - 1 # TODO: should -1 be here?
@@ -231,7 +228,6 @@ func shift_player_by_block(dir: Enums.Dir) -> void:
 
 func set_player_tile(tile: Vector2i) -> void:
 	%Player.TilePosition = tile
-	print("set_player_tile: ", tile)
 	%Player.global_position = active_block.RefLayer.to_global(
 		map_to_local(%Player.TilePosition) - 0.5 * GlobalsInst.TILE_SIZE_PIXELS
 	)

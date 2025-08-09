@@ -16,9 +16,8 @@ var dialog_boxes: Array
 # Built-In Method Overrides
 func _ready() -> void:
 	dialog_boxes = find_children("*", "Control", false)
-	print("dialog boxes: ", dialog_boxes.size())
 	if dialog_boxes.size() == 0:
-		print("no dialog box!")
+		push_warning("no dialog box!")
 		return
 	for dialog_box in dialog_boxes:
 		dialog_box.visible = false

@@ -18,7 +18,6 @@ var IsActive: bool:
 	get:
 		return _is_active
 	set(val):
-		print(name)
 		if not _is_active and val:
 			nodes_and_wires.enter_block()
 		_is_active = val
@@ -92,7 +91,6 @@ func position_after_entering(
 			new_tile.x = BlockRect.end.x - 1
 			#new_tile.y = clampi(new_tile.y, BlockRect.position.y, BlockRect.end.y)
 		Vector2i.RIGHT:
-			print("shifting right: ")
 			new_tile.x = BlockRect.position.x
 			#new_tile.y = clampi(new_tile.y, BlockRect.position.y, BlockRect.end.y)
 		_:
